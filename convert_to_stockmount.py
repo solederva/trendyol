@@ -97,7 +97,80 @@ def generate_synthetic_barcode(base: str, prefix: str, length: int = 13) -> str:
     # Fallback: core pad
     return core.ljust(length, '0')
 
-def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str):
+def extract_features_for_bullets(name: str, description_html: str) -> list:
+    """Basit kural tabanlı özellik çıkarımı. Daha gelişmiş regex eklenebilir."""
+    feats = []
+    lower = description_html.lower()
+    if 'vegan' in lower:
+        feats.append('Vegan Deri Malzeme')
+    if 'ortopedik' in lower:
+        feats.append('Ortopedik Destekli İç Taban')
+    if 'pamuk' in lower:
+        feats.append('Nefes Alabilir Pamuk Astar')
+    if 'kaymaz' in lower:
+        feats.append('Kaymaz Taban')
+    if 'topuk' in lower:
+        feats.append('Konfor Topuk Tasarımı')
+    # Ürün adına göre ek örnek
+    if 'loafer' in name.lower():
+        feats.append('Loafer Günlük Kullanıma Uygun')
+    # Tekrarları kaldır
+    uniq = []
+    for f in feats:
+        if f not in uniq:
+            uniq.append(f)
+    return uniq[:6]
+
+def build_bullet_block(features: list) -> str:
+    if not features:
+        return ''
+    items = ''.join(f'<li>{f}</li>' for f in features)
+    return f"<ul>{items}</ul>"
+
+def apply_title_template(original_name: str, template: str) -> str:
+    """Basit başlık şablonu uygular. Placeholderlar:
+    {MARKA} {MODEL} {RENK} {URUN}
+    MODEL: isimde ilk boşluk veya ilk '-' öncesi blok (alfanumerik kısım)
+    RENK: son büyük harfli renk kelimesi (heuristic: SIYAH, BEYAZ vb) bulunamazsa boş
+    URUN: model ve renk çıkarıldıktan sonra kalan orta kısım
+    """
+    name = original_name.strip()
+    if not template:
+        return name
+    import re
+    # MODEL bul
+    model_match = re.match(r"([A-Z0-9]+)", name)
+    model = model_match.group(1) if model_match else ""
+    # Renk heuristik listesi
+    renk_list = ["SIYAH","BEYAZ","LACIVERT","KAHVERENGI","GRI","YESIL","MAVI","KIRMIZI","SARI","TABA","HAKI"]
+    renk = ""
+    tokens = name.upper().split()
+    for t in reversed(tokens):
+        if t in renk_list:
+            renk = t
+            break
+    # URUN kısmını türet
+    # Orijinal adı parçala, model ve renk'i çıkar
+    words = name.split()
+    filtered = []
+    skip_model_once = False
+    skip_renk_once = False
+    for w in words:
+        wu = w.upper()
+        if not skip_model_once and model and wu.startswith(model):
+            skip_model_once = True
+            continue
+        if not skip_renk_once and renk and wu == renk:
+            skip_renk_once = True
+            continue
+        filtered.append(w)
+    urun = " ".join(filtered).strip()
+    result = template.replace('{MARKA}', 'Solederva').replace('{MODEL}', model).replace('{RENK}', renk).replace('{URUN}', urun)
+    # Çift boşlukları sadeleştir
+    result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
+    return result
+
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str):
     product_code = text(product.find("Product_code")) or text(product.find("Product_id"))
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
@@ -173,16 +246,29 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
         # keep -> hiçbir değişiklik yok
         pass
 
+    # Bullet list ekleme (isteğe bağlı)
+    if add_bullets:
+        features = extract_features_for_bullets(name, description)
+        bullet_html = build_bullet_block(features)
+        if bullet_html and bullet_html not in description:
+            description = bullet_html + " " + description
+
+    # Title template uygula
+    if title_template:
+        transformed_name = apply_title_template(name, title_template)
+    else:
+        transformed_name = name
+
     prod_data = {
         "ProductCode": product_code,
-        "ProductName": name,
+        "ProductName": transformed_name,
         "Quantity": quantity,
         "Price": price,
         "Currency": currency,
         "TaxRate": tax,
         "Barcode": barcode,
         "Category": category_path,
-        "Description": description,
+    "Description": description,
         "Brand": brand,
         "Model": "",
         "Volume": "",
@@ -271,6 +357,8 @@ def main():
     parser.add_argument("--variant-mode", action="store_true", help="Varyantları yaz (varsayılan kapalı)")
     parser.add_argument("--barcode-strategy", choices=["keep","blank","synthetic"], default="keep", help="Barkod kullanımı stratejisi")
     parser.add_argument("--barcode-prefix", default="2199", help="Sentetik barkod üretirken önek (synthetic modda)")
+    parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
+    parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -283,7 +371,7 @@ def main():
 
     products_data = []
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data)
