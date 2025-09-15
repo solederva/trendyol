@@ -3,6 +3,7 @@ import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
+import hashlib
 
 # Kaynak alan -> Stockmount alan mapping açıklaması:
 # Product_code -> ProductCode (ürün ana kodu)
@@ -68,7 +69,35 @@ def parse_variants(product: ET.Element):
         })
     return out
 
-def convert_product(product: ET.Element, variant_mode: bool):
+def generate_synthetic_barcode(base: str, prefix: str, length: int = 13) -> str:
+    """Deterministik sentetik barkod üret. EAN-13 formatına benzeyecek şekilde prefix + hash.
+    Not: Gerçek GS1 barkodu olmayabilir; buybox eşleşmesinden kaçınma amaçlıdır.
+    length parametresi minimum 8 kabul edilir; varsayılan 13.
+    """
+    if length < 8:
+        length = 8
+    # Hash'ten numerik dizi elde et
+    h = hashlib.sha256(base.encode("utf-8")).hexdigest()
+    digits = ''.join(str(int(ch, 16) % 10) for ch in h)
+    core = (prefix + digits)
+    core = core[:length-1]  # son haneyi check digit için ayır
+    # Basit EAN-13 benzeri check digit hesapla (resmi olmayabilir ama format hissi verir)
+    def ean_check(num12: str) -> str:
+        total = 0
+        for idx, c in enumerate(num12):
+            n = int(c)
+            if (idx + 1) % 2 == 0:  # even position
+                total += n * 3
+            else:
+                total += n
+        return str((10 - (total % 10)) % 10)
+    if length >= 12 and core.isdigit():
+        check = ean_check(core[:length-1])
+        return core[:length-1] + check
+    # Fallback: core pad
+    return core.ljust(length, '0')
+
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str):
     product_code = text(product.find("Product_code")) or text(product.find("Product_id"))
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
@@ -103,18 +132,10 @@ def convert_product(product: ET.Element, variant_mode: bool):
             renk = rv["renk"].strip()
             beden = rv["beden"].strip()
             group_idx = renk_index_map.get(renk, "1")
-            # Öncelik: variant barkodu varsa onu (21 eklenmiş) VariantCode yap.
-            base_variant_barcode = rv["raw_barcode"].strip()
-            # VariantCode üretim fallback zinciri:
-            # 1) base_variant_barcode (+21) varsa onu kullan
-            # 2) Yoksa ProductCode + '_' + groupIdx + (beden varsa '_' + beden) kombinasyonu
-            if base_variant_barcode:
-                vcode = append_suffix(base_variant_barcode)
-            else:
-                comp = f"{product_code}_{group_idx}"
-                if beden:
-                    comp += f"_{beden}"
-                vcode = comp
+            # VariantCode artık barkoda bağımlı değil: ProductCode + renk + beden
+            renk_part = renk.replace(' ', '') or 'RENK'
+            beden_part = beden.replace(' ', '') or 'BEDEN'
+            vcode = f"{product_code}-{renk_part}-{beden_part}".upper()
             vprice = rv["price"].strip()
             if not vprice or vprice in {"0", "0.0", "0.00"}:
                 vprice = price
@@ -138,20 +159,19 @@ def convert_product(product: ET.Element, variant_mode: bool):
     else:
         quantity = total_stock or "0"
 
-    # Barkod kuralı: Ürün barkodu boş ise ilk varyant barkodu kullanılabilir.
-    # Sonuna '21' eklenecek (eğer zaten 21 ile bitmiyorsa).
-    def append_suffix(code: str) -> str:
-        if not code:
-            return code
-        return code if code.endswith("21") else code + "21"
-
-    if not barcode:
-        # İlk anlamlı variant barkodu (raw_barcode) kullan
-        for rv in raw_variants:
-            if rv.get("raw_barcode"):
-                barcode = rv["raw_barcode"]
-                break
-    barcode = append_suffix(barcode)
+    # Barkod stratejisi uygulanıyor
+    # keep: orijinal (dokunma)
+    # blank: tamamen boş (Stockmount kabul ediyorsa)
+    # synthetic: deterministik benzersiz üret
+    original_barcode = barcode
+    if barcode_strategy == 'blank':
+        barcode = ''
+    elif barcode_strategy == 'synthetic':
+        base_for_hash = product_code or original_barcode or name
+        barcode = generate_synthetic_barcode(base_for_hash, prefix=barcode_prefix)
+    else:
+        # keep -> hiçbir değişiklik yok
+        pass
 
     prod_data = {
         "ProductCode": product_code,
@@ -187,7 +207,7 @@ def build_stockmount_xml(products_data):
         se("Currency", pdata["Currency"])              
         se("TaxRate", pdata["TaxRate"])               
         se("Barcode", pdata["Barcode"])               
-        # Category + Description CDATA için manuel ekleme gerekecek, önce placeholder
+        # Category & Description placeholder elemanları (CDATA sonradan eklenecek)
         cat_el = ET.SubElement(p_el, "Category")
         desc_el = ET.SubElement(p_el, "Description")
         # Images
@@ -206,34 +226,42 @@ def build_stockmount_xml(products_data):
                     if v[t]:
                         el.text = v[t]
         # CDATA ekleme (ElementTree default desteklemediği için string post-process)
-        cat_el.text = pdata["Category"]
-        desc_el.text = pdata["Description"]
+        # Placeholder işaretleri; gerçek CDATA son aşamada eklenecek
+        cat_el.text = f"__CDATA_CAT_START__{pdata['Category']}__CDATA_CAT_END__"
+        desc_el.text = f"__CDATA_DESC_START__{pdata['Description']}__CDATA_DESC_END__"
     return root
 
 
 def serialize_with_cdata(root: ET.Element) -> str:
-    # Önce düz serialize
-    raw = ET.tostring(root, encoding="utf-8").decode("utf-8")
+    """XML'i güzel biçimli (pretty) ve Category/Description alanlarını CDATA içinde üret."""
     import re, html
+    try:
+        # Python 3.9+ indent fonksiyonu
+        ET.indent(root, space="  ", level=0)  # type: ignore[attr-defined]
+    except Exception:
+        # Eski sürüm fallback: manuel indent (gerekirse eklenebilir)
+        pass
 
-    # Category ve Description içeriklerini orijinal HTML'e geri döndür (escape kaldır) ve CDATA ile sar
-    def repl(m):
-        tag = m.group(1)
-        content = m.group(2)
-        if not content.strip():
-            return f"<{tag}></{tag}>"
-        unescaped = html.unescape(content)
-        return f"<{tag}><![CDATA[{unescaped}]]></{tag}>"
+    raw = ET.tostring(root, encoding="utf-8").decode("utf-8")
+    # Placeholder'ları yakala ve içeriği unescape ederek CDATA ile değiştir
+    def repl_placeholder(pattern_token, tag_name):
+        p = re.compile(fr"<{tag_name}>(.*?)</{tag_name}>", re.DOTALL)
+        def inner(m):
+            content = m.group(1)
+            prefix_start = f"__CDATA_{pattern_token}_START__"
+            prefix_end = f"__CDATA_{pattern_token}_END__"
+            if not content.startswith(prefix_start) or not content.endswith(prefix_end):
+                return m.group(0)
+            inner_raw = content[len(prefix_start):-len(prefix_end)]
+            unescaped = html.unescape(inner_raw)
+            safe = unescaped.replace(']]>', ']]]]><![CDATA[>')
+            return f"<{tag_name}><![CDATA[{safe}]]></{tag_name}>"
+        return p.sub(inner, raw)
 
-    raw = re.sub(r"<(Category|Description)>(.*?)</\\1>", repl, raw, flags=re.DOTALL)
+    raw = repl_placeholder('CAT', 'Category')
+    raw = repl_placeholder('DESC', 'Description')
 
-    # Pretty print: ek olarak her kapanıştan sonra newline yerleştir
-    # Çok büyük dosya olduğundan minimal pretty (></Product><Product -> >\n</Product>\n<Product)
-    raw = raw.replace('</Product><Product>', '</Product>\n  <Product>')
-    raw = raw.replace('<Products><Product>', '<Products>\n  <Product>')
-    raw = raw.replace('</Product></Products>', '</Product>\n</Products>')
-
-    return '<?xml version="1.0" encoding="UTF-8"?>\n' + raw + '\n'
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + raw + ('\n' if not raw.endswith('\n') else '')
 
 
 def main():
@@ -241,6 +269,8 @@ def main():
     parser.add_argument("--input", required=True, help="Kaynak XML dosyası (standart.xml)")
     parser.add_argument("--output", required=True, help="Oluşacak Stockmount XML dosyası")
     parser.add_argument("--variant-mode", action="store_true", help="Varyantları yaz (varsayılan kapalı)")
+    parser.add_argument("--barcode-strategy", choices=["keep","blank","synthetic"], default="keep", help="Barkod kullanımı stratejisi")
+    parser.add_argument("--barcode-prefix", default="2199", help="Sentetik barkod üretirken önek (synthetic modda)")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -253,7 +283,7 @@ def main():
 
     products_data = []
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data)
