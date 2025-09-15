@@ -30,7 +30,7 @@ jobs:
             curl -L --fail --silent --show-error "${{ secrets.SOURCE_FEED_URL }}" -o data/source.xml
           fi
 
-      - name: Convert to Stockmount format (synthetic + bullets + title + no brand)
+      - name: Convert to Stockmount format (synthetic + bullets + title + no brand + enforce random)
         run: |
           python convert_to_stockmount.py \
             --input data/source.xml \
@@ -40,7 +40,9 @@ jobs:
             --barcode-prefix 2199 \
             --add-bullets \
             --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
-            --omit-brand
+            --omit-brand \
+            --enforce-random-barcodes \
+            --random-barcode-prefix 27
 
       - name: Commit & push if changed
         run: |
