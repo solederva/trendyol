@@ -170,7 +170,7 @@ def apply_title_template(original_name: str, template: str) -> str:
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
 
-def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str):
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, enforce_barcode: bool):
     product_code = text(product.find("Product_code")) or text(product.find("Product_id"))
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
@@ -237,14 +237,35 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     # blank: tamamen boş (Stockmount kabul ediyorsa)
     # synthetic: deterministik benzersiz üret
     original_barcode = barcode
+    def is_valid_ean13(code: str) -> bool:
+        if not code or not code.isdigit() or len(code) != 13:
+            return False
+        # basit check digit doğrulaması
+        body = code[:12]
+        check = code[-1]
+        total = 0
+        for idx, c in enumerate(body):
+            n = int(c)
+            if (idx + 1) % 2 == 0:
+                total += n * 3
+            else:
+                total += n
+        calc = (10 - (total % 10)) % 10
+        return check == str(calc)
+
     if barcode_strategy == 'blank':
         barcode = ''
     elif barcode_strategy == 'synthetic':
         base_for_hash = product_code or original_barcode or name
         barcode = generate_synthetic_barcode(base_for_hash, prefix=barcode_prefix)
-    else:
-        # keep -> hiçbir değişiklik yok
+    else:  # keep
+        # orijinali bırak
         pass
+
+    if enforce_barcode:
+        if not is_valid_ean13(barcode):
+            base_for_hash = product_code or original_barcode or name
+            barcode = generate_synthetic_barcode(base_for_hash, prefix=barcode_prefix)
 
     # Bullet list ekleme (isteğe bağlı)
     if add_bullets:
@@ -361,6 +382,7 @@ def main():
     parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
     parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
     parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
+    parser.add_argument("--enforce-barcode", action="store_true", help="Eksik/geçersiz barkodu zorunlu olarak sentetik üret")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -373,7 +395,7 @@ def main():
 
     products_data = []
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, enforce_barcode=args.enforce_barcode)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
