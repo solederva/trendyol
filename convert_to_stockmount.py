@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
 import hashlib
+import random
 
 # Kaynak alan -> Stockmount alan mapping açıklaması:
 # Product_code -> ProductCode (ürün ana kodu)
@@ -170,7 +171,15 @@ def apply_title_template(original_name: str, template: str) -> str:
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
 
-def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, enforce_barcode: bool):
+def random_barcode(length: int = 13, prefix: str = "") -> str:
+    base_len = max(8, length - len(prefix))
+    digits = ''.join(str(random.randint(0,9)) for _ in range(base_len))
+    candidate = (prefix + digits)[:length]
+    if len(candidate) < length:
+        candidate = candidate.ljust(length, '0')
+    return candidate
+
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, enforce_random: bool, random_prefix: str, used_barcodes: set):
     product_code = text(product.find("Product_code")) or text(product.find("Product_id"))
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
@@ -237,35 +246,36 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     # blank: tamamen boş (Stockmount kabul ediyorsa)
     # synthetic: deterministik benzersiz üret
     original_barcode = barcode
-    def is_valid_ean13(code: str) -> bool:
-        if not code or not code.isdigit() or len(code) != 13:
-            return False
-        # basit check digit doğrulaması
-        body = code[:12]
-        check = code[-1]
-        total = 0
-        for idx, c in enumerate(body):
-            n = int(c)
-            if (idx + 1) % 2 == 0:
-                total += n * 3
-            else:
-                total += n
-        calc = (10 - (total % 10)) % 10
-        return check == str(calc)
-
     if barcode_strategy == 'blank':
         barcode = ''
     elif barcode_strategy == 'synthetic':
         base_for_hash = product_code or original_barcode or name
         barcode = generate_synthetic_barcode(base_for_hash, prefix=barcode_prefix)
-    else:  # keep
-        # orijinali bırak
+    else:
+        # keep
         pass
 
-    if enforce_barcode:
-        if not is_valid_ean13(barcode):
-            base_for_hash = product_code or original_barcode or name
-            barcode = generate_synthetic_barcode(base_for_hash, prefix=barcode_prefix)
+    # Enforce random: boş, çok kısa (<8), numeric olmayan ya da tekrar eden barkodları random ile değiştir
+    def needs_random(bc: str) -> bool:
+        if not bc:
+            return True
+        if not bc.isdigit():
+            return True
+        if len(bc) < 8:
+            return True
+        if bc in used_barcodes:
+            return True
+        return False
+
+    if enforce_random and needs_random(barcode):
+        # Üret, benzersiz olana kadar dene (limit)
+        for _ in range(20):
+            cand = random_barcode(13, prefix=random_prefix)
+            if cand not in used_barcodes:
+                barcode = cand
+                break
+
+    used_barcodes.add(barcode)
 
     # Bullet list ekleme (isteğe bağlı)
     if add_bullets:
@@ -382,7 +392,8 @@ def main():
     parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
     parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
     parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
-    parser.add_argument("--enforce-barcode", action="store_true", help="Eksik/geçersiz barkodu zorunlu olarak sentetik üret")
+    parser.add_argument("--enforce-random-barcodes", action="store_true", help="Geçersiz/boş/tüketilmiş barkodları rastgele benzersiz barkodla değiştir")
+    parser.add_argument("--random-barcode-prefix", default="27", help="Rastgele barkod üretirken önek")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -394,8 +405,9 @@ def main():
     root = tree.getroot()
 
     products_data = []
+    used_barcodes = set()
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, enforce_barcode=args.enforce_barcode)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, enforce_random=args.enforce_random_barcodes, random_prefix=args.random_barcode_prefix, used_barcodes=used_barcodes)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
