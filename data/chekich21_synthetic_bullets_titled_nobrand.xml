@@ -252,7 +252,7 @@
   <Product>
     <ProductCode>MN003D25490SH</ProductCode>
     <ProductName>Solederva - DST Classica Pelle Di Cuoio Erkek Ayakkabı SIYAH - MN003</ProductName>
-    <Quantity>317</Quantity>
+    <Quantity>316</Quantity>
     <Price>3201</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -305,7 +305,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN003D25490SH-SIYAH-43</VariantCode>
-        <VariantQuantity>31</VariantQuantity>
+        <VariantQuantity>30</VariantQuantity>
         <VariantPrice>3201</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -8052,7 +8052,7 @@
   <Product>
     <ProductCode>MN251C25394TB</ProductCode>
     <ProductName>Solederva - CST Mirror Erkek Ayakkabı TABA - MN251</ProductName>
-    <Quantity>56</Quantity>
+    <Quantity>55</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -8150,7 +8150,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN251C25394TB-TABA-45</VariantCode>
-        <VariantQuantity>4</VariantQuantity>
+        <VariantQuantity>3</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>TABA</VariantValue1>
@@ -9242,7 +9242,7 @@
   <Product>
     <ProductCode>MN257F15394BJ01</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı BEJ - MN257</ProductName>
-    <Quantity>180</Quantity>
+    <Quantity>179</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9304,7 +9304,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394BJ01-BEJ-41</VariantCode>
-        <VariantQuantity>46</VariantQuantity>
+        <VariantQuantity>45</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
@@ -9361,7 +9361,7 @@
   <Product>
     <ProductCode>MN257F15394BZ</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı BEYAZ - MN257</ProductName>
-    <Quantity>873</Quantity>
+    <Quantity>872</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9405,7 +9405,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394BZ-BEYAZ-39</VariantCode>
-        <VariantQuantity>103</VariantQuantity>
+        <VariantQuantity>102</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -9480,7 +9480,7 @@
   <Product>
     <ProductCode>MN257F15394SH</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı SIYAH - MN257</ProductName>
-    <Quantity>575</Quantity>
+    <Quantity>573</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9524,7 +9524,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394SH-SIYAH-39</VariantCode>
-        <VariantQuantity>53</VariantQuantity>
+        <VariantQuantity>52</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -9569,7 +9569,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394SH-SIYAH-44</VariantCode>
-        <VariantQuantity>39</VariantQuantity>
+        <VariantQuantity>38</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -9718,7 +9718,7 @@
   <Product>
     <ProductCode>MN257F25394SH</ProductCode>
     <ProductName>Solederva - CST Estrella Erkek Ayakkabı SIYAH - MN257</ProductName>
-    <Quantity>628</Quantity>
+    <Quantity>627</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9825,7 +9825,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F25394SH-SIYAH-46</VariantCode>
-        <VariantQuantity>6</VariantQuantity>
+        <VariantQuantity>5</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -10194,7 +10194,7 @@
   <Product>
     <ProductCode>MN257R25394SH</ProductCode>
     <ProductName>Solederva - RST Estrella Erkek Ayakkabı SIYAH - MN257</ProductName>
-    <Quantity>4</Quantity>
+    <Quantity>3</Quantity>
     <Price>1716</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10238,7 +10238,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257R25394SH-SIYAH-41</VariantCode>
-        <VariantQuantity>1</VariantQuantity>
+        <VariantQuantity>0</VariantQuantity>
         <VariantPrice>1716</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
