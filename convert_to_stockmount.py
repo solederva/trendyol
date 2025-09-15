@@ -278,7 +278,7 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     return prod_data
 
 
-def build_stockmount_xml(products_data):
+def build_stockmount_xml(products_data, omit_brand: bool = False):
     root = ET.Element("Products")
     for pdata in products_data:
         p_el = ET.SubElement(root, "Product")
@@ -300,7 +300,8 @@ def build_stockmount_xml(products_data):
         for i in range(1, 6):
             tag = f"Image{i}"
             se(tag, pdata["Images"].get(tag))
-        se("Brand", pdata["Brand"])                    
+        if not omit_brand:
+            se("Brand", pdata["Brand"])                    
         se("Model", pdata["Model"])                    
         se("Volume", pdata["Volume"])                  
         if pdata["Variants"]:
@@ -359,6 +360,7 @@ def main():
     parser.add_argument("--barcode-prefix", default="2199", help="Sentetik barkod üretirken önek (synthetic modda)")
     parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
     parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
+    parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -374,7 +376,7 @@ def main():
         pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template)
         products_data.append(pdata)
 
-    out_root = build_stockmount_xml(products_data)
+    out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
     xml_str = serialize_with_cdata(out_root)
     Path(args.output).write_text(xml_str, encoding="utf-8")
     print(f"Olusturuldu: {args.output} ({len(products_data)} ürün)")
