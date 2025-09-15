@@ -4,7 +4,6 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
 import hashlib
-import random
 
 # Kaynak alan -> Stockmount alan mapping açıklaması:
 # Product_code -> ProductCode (ürün ana kodu)
@@ -171,15 +170,7 @@ def apply_title_template(original_name: str, template: str) -> str:
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
 
-def random_barcode(length: int = 13, prefix: str = "") -> str:
-    base_len = max(8, length - len(prefix))
-    digits = ''.join(str(random.randint(0,9)) for _ in range(base_len))
-    candidate = (prefix + digits)[:length]
-    if len(candidate) < length:
-        candidate = candidate.ljust(length, '0')
-    return candidate
-
-def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, enforce_random: bool, random_prefix: str, used_barcodes: set):
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str):
     product_code = text(product.find("Product_code")) or text(product.find("Product_id"))
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
@@ -252,30 +243,13 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
         base_for_hash = product_code or original_barcode or name
         barcode = generate_synthetic_barcode(base_for_hash, prefix=barcode_prefix)
     else:
-        # keep
-        pass
-
-    # Enforce random: boş, çok kısa (<8), numeric olmayan ya da tekrar eden barkodları random ile değiştir
-    def needs_random(bc: str) -> bool:
-        if not bc:
-            return True
-        if not bc.isdigit():
-            return True
-        if len(bc) < 8:
-            return True
-        if bc in used_barcodes:
-            return True
-        return False
-
-    if enforce_random and needs_random(barcode):
-        # Üret, benzersiz olana kadar dene (limit)
-        for _ in range(20):
-            cand = random_barcode(13, prefix=random_prefix)
-            if cand not in used_barcodes:
-                barcode = cand
-                break
-
-    used_barcodes.add(barcode)
+        # keep -> orijinal barkod; eğer boşsa ilk variant raw_barcode fallback uygula
+        if (not barcode or barcode.strip() == '') and raw_variants:
+            for rv in raw_variants:
+                rb = rv.get('raw_barcode')
+                if rb:
+                    barcode = rb.strip()
+                    break
 
     # Bullet list ekleme (isteğe bağlı)
     if add_bullets:
@@ -392,8 +366,6 @@ def main():
     parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
     parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
     parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
-    parser.add_argument("--enforce-random-barcodes", action="store_true", help="Geçersiz/boş/tüketilmiş barkodları rastgele benzersiz barkodla değiştir")
-    parser.add_argument("--random-barcode-prefix", default="27", help="Rastgele barkod üretirken önek")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -405,9 +377,8 @@ def main():
     root = tree.getroot()
 
     products_data = []
-    used_barcodes = set()
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, enforce_random=args.enforce_random_barcodes, random_prefix=args.random_barcode_prefix, used_barcodes=used_barcodes)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)

@@ -30,19 +30,16 @@ jobs:
             curl -L --fail --silent --show-error "${{ secrets.SOURCE_FEED_URL }}" -o data/source.xml
           fi
 
-      - name: Convert to Stockmount format (synthetic + bullets + title + no brand + enforce random)
+      - name: Convert to Stockmount format (keep barcode + bullets + title + no brand)
         run: |
           python convert_to_stockmount.py \
             --input data/source.xml \
             --output data/chekich21_synthetic_bullets_titled_nobrand.xml \
             --variant-mode \
-            --barcode-strategy synthetic \
-            --barcode-prefix 2199 \
+            --barcode-strategy keep \
             --add-bullets \
             --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
-            --omit-brand \
-            --enforce-random-barcodes \
-            --random-barcode-prefix 27
+            --omit-brand
 
       - name: Commit & push if changed
         run: |
