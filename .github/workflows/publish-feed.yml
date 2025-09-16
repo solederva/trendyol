@@ -39,7 +39,7 @@ jobs:
             --barcode-strategy keep \
             --add-bullets \
             --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
-            --omit-brand
+            
 
       - name: Commit & push if changed
         run: |
