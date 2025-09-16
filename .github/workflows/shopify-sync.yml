@@ -1,0 +1,77 @@
+name: Shopify Store Sync (30min)
+
+on:
+  schedule:
+    - cron: '*/30 * * * *'  # Her 30 dakikada bir
+  workflow_dispatch:
+
+jobs:
+  sync-shopify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+
+      - name: Download source feed
+        run: |
+          if [ -z "${{ secrets.XML_FEED_URL }}" ]; then
+            echo "XML_FEED_URL secret tanımlı değil. Varsayılan data/source.xml kullanılacak." >&2
+            # Copy one of the existing files as fallback
+            cp data/chekich21_synthetic_bullets_titled_nobrand.xml data/source.xml
+          else
+            echo "Remote kaynaktan indiriliyor: ${{ secrets.XML_FEED_URL }}" >&2
+            curl -L --fail --silent --show-error "${{ secrets.XML_FEED_URL }}" -o data/source.xml
+          fi
+
+      - name: Sync with Shopify
+        run: |
+          python shopify_integration.py \
+            --shop-domain "${{ secrets.SHOPIFY_SHOP_DOMAIN }}" \
+            --access-token "${{ secrets.SHOPIFY_ACCESS_TOKEN }}" \
+            --xml-feed data/source.xml \
+            --mode update \
+            --state-file shopify_sync_state.json \
+            --log-level INFO
+        env:
+          PYTHONUNBUFFERED: 1
+
+      - name: Commit & push sync state if changed
+        run: |
+          git config user.name "shopify-sync-bot"
+          git config user.email "actions@github.com"
+          
+          # Add sync state file if it exists and has changes
+          if [ -f shopify_sync_state.json ]; then
+            git add shopify_sync_state.json
+            
+            if ! git diff --quiet --cached; then
+              git commit -m "chore(shopify): sync state update $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
+              git push
+            else
+              echo "No sync state changes to commit"
+            fi
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload logs as artifact (on failure)
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: shopify-sync-logs
+          path: |
+            feed_monitor.log
+            *.log
+          retention-days: 7
+
+permissions:
+  contents: write
