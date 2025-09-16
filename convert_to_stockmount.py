@@ -227,6 +227,7 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
                 "VariantValue1": renk,
                 "VariantName2": "Beden" if beden else "",
                 "VariantValue2": beden,
+                "Barcode": rv.get("raw_barcode", ""),
             })
         quantity = str(sum(int(v.get("VariantQuantity", "0")) for v in variants_output))
     else:
@@ -313,10 +314,16 @@ def build_stockmount_xml(products_data, omit_brand: bool = False):
             vars_el = ET.SubElement(p_el, "Variants")
             for v in pdata["Variants"]:
                 v_el = ET.SubElement(vars_el, "Variant")
+                # Standart alanlar
                 for t in ["VariantCode","VariantQuantity","VariantPrice","VariantName1","VariantValue1","VariantName2","VariantValue2"]:
                     el = ET.SubElement(v_el, t)
                     if v[t]:
                         el.text = v[t]
+                # Barkod alanı (Stockmount bazı şemalarda Variant > Barcode bekleyebilir)
+                barkod_val = v.get("Barcode", "")
+                b_el = ET.SubElement(v_el, "Barcode")
+                if barkod_val:
+                    b_el.text = barkod_val
         # CDATA ekleme (ElementTree default desteklemediği için string post-process)
         # Placeholder işaretleri; gerçek CDATA son aşamada eklenecek
         cat_el.text = f"__CDATA_CAT_START__{pdata['Category']}__CDATA_CAT_END__"
