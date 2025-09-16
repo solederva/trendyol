@@ -925,7 +925,7 @@
   <Product>
     <ProductCode>MN015I15489BZ</ProductCode>
     <ProductName>Solederva - CBT First Edition Erkek Ayakkabı BEYAZ - MN015</ProductName>
-    <Quantity>136</Quantity>
+    <Quantity>128</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -978,7 +978,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I15489BZ-BEYAZ-40</VariantCode>
-        <VariantQuantity>30</VariantQuantity>
+        <VariantQuantity>28</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -987,7 +987,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I15489BZ-BEYAZ-41</VariantCode>
-        <VariantQuantity>33</VariantQuantity>
+        <VariantQuantity>31</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -996,7 +996,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I15489BZ-BEYAZ-42</VariantCode>
-        <VariantQuantity>27</VariantQuantity>
+        <VariantQuantity>25</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1005,7 +1005,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I15489BZ-BEYAZ-43</VariantCode>
-        <VariantQuantity>10</VariantQuantity>
+        <VariantQuantity>9</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1014,7 +1014,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I15489BZ-BEYAZ-44</VariantCode>
-        <VariantQuantity>5</VariantQuantity>
+        <VariantQuantity>4</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1282,7 +1282,7 @@
   <Product>
     <ProductCode>MN015I15489SH</ProductCode>
     <ProductName>Solederva - CBT First Edition Erkek Ayakkabı SIYAH - MN015</ProductName>
-    <Quantity>169</Quantity>
+    <Quantity>165</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -1335,7 +1335,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I15489SH-SIYAH-40</VariantCode>
-        <VariantQuantity>61</VariantQuantity>
+        <VariantQuantity>59</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -1353,7 +1353,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I15489SH-SIYAH-42</VariantCode>
-        <VariantQuantity>30</VariantQuantity>
+        <VariantQuantity>28</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -1520,7 +1520,7 @@
   <Product>
     <ProductCode>MN015I25489SH</ProductCode>
     <ProductName>Solederva - CST First Edition Erkek Ayakkabı SIYAH - MN015</ProductName>
-    <Quantity>70</Quantity>
+    <Quantity>63</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -1573,7 +1573,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I25489SH-SIYAH-40</VariantCode>
-        <VariantQuantity>25</VariantQuantity>
+        <VariantQuantity>23</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -1582,7 +1582,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I25489SH-SIYAH-41</VariantCode>
-        <VariantQuantity>23</VariantQuantity>
+        <VariantQuantity>21</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -1591,7 +1591,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I25489SH-SIYAH-42</VariantCode>
-        <VariantQuantity>3</VariantQuantity>
+        <VariantQuantity>1</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -1609,7 +1609,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN015I25489SH-SIYAH-44</VariantCode>
-        <VariantQuantity>9</VariantQuantity>
+        <VariantQuantity>8</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -2256,7 +2256,7 @@
   <Product>
     <ProductCode>MN057G1201506ATBZ</ProductCode>
     <ProductName>Solederva - GABT Ghost Line Erkek Bot ANTRASIT/BYZ(57-10) - MN057</ProductName>
-    <Quantity>143</Quantity>
+    <Quantity>142</Quantity>
     <Price>2805</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -2282,7 +2282,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN057G1201506ATBZ-ANTRASIT/BYZ(57-10)-41</VariantCode>
-        <VariantQuantity>47</VariantQuantity>
+        <VariantQuantity>46</VariantQuantity>
         <VariantPrice>2805</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>ANTRASIT/BYZ(57-10)</VariantValue1>
@@ -6082,7 +6082,7 @@
   <Product>
     <ProductCode>MN229F2340SH</ProductCode>
     <ProductName>Solederva - FST Crow Erkek Bot SIYAH - MN229</ProductName>
-    <Quantity>287</Quantity>
+    <Quantity>286</Quantity>
     <Price>2970</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -6108,7 +6108,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN229F2340SH-SIYAH-41</VariantCode>
-        <VariantQuantity>87</VariantQuantity>
+        <VariantQuantity>86</VariantQuantity>
         <VariantPrice>2970</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -7933,7 +7933,7 @@
   <Product>
     <ProductCode>MN251C25394SH</ProductCode>
     <ProductName>Solederva - CST Mirror Erkek Ayakkabı SIYAH - MN251</ProductName>
-    <Quantity>169</Quantity>
+    <Quantity>168</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -8022,7 +8022,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN251C25394SH-SIYAH-44</VariantCode>
-        <VariantQuantity>29</VariantQuantity>
+        <VariantQuantity>28</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -8409,7 +8409,7 @@
   <Product>
     <ProductCode>MN253C15394SH</ProductCode>
     <ProductName>Solederva - CBT Mirror Non Erkek Ayakkabı SIYAH - MN253</ProductName>
-    <Quantity>241</Quantity>
+    <Quantity>240</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -8507,7 +8507,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN253C15394SH-SIYAH-45</VariantCode>
-        <VariantQuantity>3</VariantQuantity>
+        <VariantQuantity>2</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -9242,7 +9242,7 @@
   <Product>
     <ProductCode>MN257F15394BJ01</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı BEJ - MN257</ProductName>
-    <Quantity>174</Quantity>
+    <Quantity>173</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9322,7 +9322,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394BJ01-BEJ-43</VariantCode>
-        <VariantQuantity>32</VariantQuantity>
+        <VariantQuantity>31</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
@@ -9361,7 +9361,7 @@
   <Product>
     <ProductCode>MN257F15394BZ</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı BEYAZ - MN257</ProductName>
-    <Quantity>858</Quantity>
+    <Quantity>856</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9441,7 +9441,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394BZ-BEYAZ-43</VariantCode>
-        <VariantQuantity>106</VariantQuantity>
+        <VariantQuantity>105</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -9459,7 +9459,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394BZ-BEYAZ-45</VariantCode>
-        <VariantQuantity>53</VariantQuantity>
+        <VariantQuantity>52</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -9480,7 +9480,7 @@
   <Product>
     <ProductCode>MN257F15394SH</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı SIYAH - MN257</ProductName>
-    <Quantity>548</Quantity>
+    <Quantity>545</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9515,7 +9515,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394SH-SIYAH-38</VariantCode>
-        <VariantQuantity>13</VariantQuantity>
+        <VariantQuantity>11</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -9542,7 +9542,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F15394SH-SIYAH-41</VariantCode>
-        <VariantQuantity>84</VariantQuantity>
+        <VariantQuantity>83</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -9718,7 +9718,7 @@
   <Product>
     <ProductCode>MN257F25394SH</ProductCode>
     <ProductName>Solederva - CST Estrella Erkek Ayakkabı SIYAH - MN257</ProductName>
-    <Quantity>609</Quantity>
+    <Quantity>607</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9798,7 +9798,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F25394SH-SIYAH-43</VariantCode>
-        <VariantQuantity>101</VariantQuantity>
+        <VariantQuantity>100</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -9807,7 +9807,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN257F25394SH-SIYAH-44</VariantCode>
-        <VariantQuantity>10</VariantQuantity>
+        <VariantQuantity>9</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -10872,7 +10872,7 @@
   <Product>
     <ProductCode>MN271I16113BZ</ProductCode>
     <ProductName>Solederva - CRT Ariaso Erkek Ayakkabı BEYAZ - MN271</ProductName>
-    <Quantity>15</Quantity>
+    <Quantity>14</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10934,7 +10934,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN271I16113BZ-BEYAZ-43</VariantCode>
-        <VariantQuantity>3</VariantQuantity>
+        <VariantQuantity>2</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -13894,7 +13894,7 @@
   <Product>
     <ProductCode>MN2409T124004BJ01</ProductCode>
     <ProductName>Solederva - Triko Erkek Ayakkabı BEJ - MN2409</ProductName>
-    <Quantity>188</Quantity>
+    <Quantity>187</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -13947,7 +13947,7 @@
       </Variant>
       <Variant>
         <VariantCode>MN2409T124004BJ01-BEJ-44</VariantCode>
-        <VariantQuantity>24</VariantQuantity>
+        <VariantQuantity>23</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
