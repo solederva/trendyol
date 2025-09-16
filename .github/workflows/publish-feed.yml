@@ -2,10 +2,14 @@ name: Publish Stockmount Feed (30min)
 
 on:
   schedule:
-    # 08:00 - 13:30 arası her 30 dk (08,08:30,...13:30)
-    - cron: '0,30 8-13 * * *'
-    # 14:00 final çekim
-    - cron: '0 14 * * *'
+    # Hafta içi (Pazartesi=1 .. Cuma=5): 08:00-13:30 her 30 dk
+    - cron: '0,30 8-13 * * 1-5'
+    # Hafta içi final 14:00
+    - cron: '0 14 * * 1-5'
+    # Cumartesi tek çekim 09:00
+    - cron: '0 9 * * 6'
+    # Pazar tek çekim 09:00
+    - cron: '0 9 * * 0'
   workflow_dispatch:
 
 jobs:
