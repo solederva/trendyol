@@ -48,6 +48,18 @@ def extract_images(product: ET.Element):
         images[tag] = text(product.find(tag))
     return images
 
+def normalize_variant_color(value: str) -> str:
+    """Renk değerlerinde "/" çevresindeki boşluklarla birlikte '-' yap ve boşlukları sadeleştir.
+    Örn: "BEYAZ / SAX MAVI" -> "BEYAZ-SAX MAVI", "BEJ/BEJ" -> "BEJ-BEJ".
+    """
+    import re
+    s = (value or "").strip()
+    if not s:
+        return s
+    s = re.sub(r"\s*/\s*", "-", s)
+    s = re.sub(r"\s+", " ", s)
+    return s
+
 def parse_variants(product: ET.Element):
     variants_parent = product.find("variants")
     if variants_parent is None:
@@ -55,7 +67,7 @@ def parse_variants(product: ET.Element):
     out = []
     for v in variants_parent.findall("variant"):
         specs = {s.get("name"): (s.text or "").strip() for s in v.findall("spec")}
-        renk = specs.get("Renk", "")
+        renk = normalize_variant_color(specs.get("Renk", ""))
         beden = specs.get("Beden", "")
         quantity = text(v.find("quantity")) or "0"
         price_raw = text(v.find("price"))
