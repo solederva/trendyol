@@ -182,8 +182,23 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     description = description_elem.text if description_elem is not None and description_elem.text else ""
     category_path = build_category(product)
     images = extract_images(product)
-    # Marka override talebi: tüm ürünlerde 'solederva'
-    brand = "solederva"
+    # Marka: kaynaktan ne gelirse onu kullan; boşsa 'Solederva' fallback
+    brand_src = text(product.find("Brand"))
+    brand = brand_src if brand_src else "Solederva"
+
+    # Ağırlık: boş veya geçersizse 2 olarak ayarla
+    weight_raw = text(product.find("Weight")) or text(product.find("weight"))
+    def norm_weight(val: str) -> str:
+        try:
+            if not val:
+                return "2"
+            w = float(val.replace(',', '.'))
+            if w <= 0:
+                return "2"
+            return str(int(w)) if abs(w - int(w)) < 1e-6 else str(w)
+        except Exception:
+            return "2"
+    weight = norm_weight(weight_raw)
 
     raw_variants = parse_variants(product)
     has_variants = variant_mode and len(raw_variants) > 0
@@ -277,7 +292,8 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     "Description": description,
         "Brand": brand,
         "Model": "",
-        "Volume": "",
+    "Volume": "",
+    "Weight": weight,
         "Images": images,
         "Variants": variants_output if has_variants else []
     }
@@ -310,6 +326,7 @@ def build_stockmount_xml(products_data, omit_brand: bool = False):
             se("Brand", pdata["Brand"])                    
         se("Model", pdata["Model"])                    
         se("Volume", pdata["Volume"])                  
+        se("Weight", pdata.get("Weight", "2"))        
         if pdata["Variants"]:
             vars_el = ET.SubElement(p_el, "Variants")
             for v in pdata["Variants"]:
