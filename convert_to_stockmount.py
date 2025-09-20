@@ -103,6 +103,15 @@ def normalize_variant_color(value: str) -> str:
     s = s.strip(" -")
     return s
 
+def normalize_product_code_prefix(value: str) -> str:
+    """ProductCode başı 'MN' ise 'SD' ile değiştir."""
+    if not value:
+        return value
+    v = value.strip()
+    if v.upper().startswith("MN"):
+        return "SD" + v[2:]
+    return v
+
 def parse_variants(product: ET.Element):
     variants_parent = product.find("variants")
     if variants_parent is None:
@@ -226,7 +235,8 @@ def apply_title_template(original_name: str, template: str) -> str:
     return result
 
 def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, brand_override: str = ""):
-    product_code = text(product.find("Product_code")) or text(product.find("Product_id"))
+    product_code_raw = text(product.find("Product_code")) or text(product.find("Product_id"))
+    product_code = normalize_product_code_prefix(product_code_raw)
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
     price = text(product.find("Price"))
