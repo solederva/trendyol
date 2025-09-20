@@ -49,15 +49,58 @@ def extract_images(product: ET.Element):
     return images
 
 def normalize_variant_color(value: str) -> str:
-    """Renk değerlerinde "/" çevresindeki boşluklarla birlikte '-' yap ve boşlukları sadeleştir.
-    Örn: "BEYAZ / SAX MAVI" -> "BEYAZ-SAX MAVI", "BEJ/BEJ" -> "BEJ-BEJ".
+    """Renk normalizasyonu:
+    - Parantez içi kodları kaldır: "ANTRASIT-BYZ(57-10)" -> "ANTRASIT-BYZ"
+    - "/" çevresini '-' yap: "BEYAZ / SAX MAVI" -> "BEYAZ-SAX MAVI"
+    - Yaygın kısaltmaları genişlet: BYZ->BEYAZ, SYH->SIYAH, SAX->SAKS, LAC->LACIVERT, vb.
+    - Boşlukları sadeleştir, tire etrafındaki boşlukları temizle.
     """
     import re
     s = (value or "").strip()
     if not s:
         return s
+    # Büyük harfe çevir (eşleştirmeyi kolaylaştırmak için)
+    s = s.upper()
+    # Parantez içi tüm içerikleri temizle (sondaki varyant kodları vs.)
+    s = re.sub(r"\s*\([^)]*\)", "", s)
+    # "/" -> "-" (çevresindeki boşluklarla)
     s = re.sub(r"\s*/\s*", "-", s)
-    s = re.sub(r"\s+", " ", s)
+    # Tire etrafındaki boşlukları kaldır
+    s = re.sub(r"\s*-\s*", "-", s)
+    # Fazla boşlukları sadeleştir
+    s = re.sub(r"\s+", " ", s).strip()
+
+    # Kısaltma eşleştirme tablosu
+    mapping = {
+        "SYH": "SIYAH",
+        "SİYAH": "SIYAH",  # olası i varyasyonu
+        "BYZ": "BEYAZ",
+        "BLC": "SIYAH",  # olası yabancı kısaltma (black)
+        "BLK": "SIYAH",
+        "LAC": "LACIVERT",
+        "LACI": "LACIVERT",
+        "LACV": "LACIVERT",
+        "ANTR": "ANTRASIT",
+        "ANT": "ANTRASIT",
+        "HKI": "HAKI",
+        "HAK": "HAKI",
+        "KRMZ": "KIRMIZI",
+        "KRM": "KIRMIZI",
+        "MAV": "MAVI",
+        "SAX": "SAKS",
+        "KAHVE": "KAHVERENGI",
+    }
+
+    # Yalnızca harf/rakam gruplarını hedefleyerek kısaltmaları genişlet
+    def repl_token(m):
+        tok = m.group(0)
+        return mapping.get(tok, tok)
+
+    s = re.sub(r"[A-Z0-9]+", repl_token, s)
+
+    # Son temizlik (çift tire, baş/son tire vs.)
+    s = re.sub(r"-+", "-", s)
+    s = s.strip(" -")
     return s
 
 def parse_variants(product: ET.Element):
@@ -182,7 +225,7 @@ def apply_title_template(original_name: str, template: str) -> str:
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
 
-def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str):
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, brand_override: str = ""):
     product_code = text(product.find("Product_code")) or text(product.find("Product_id"))
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
@@ -194,9 +237,11 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     description = description_elem.text if description_elem is not None and description_elem.text else ""
     category_path = build_category(product)
     images = extract_images(product)
-    # Marka: kaynaktan ne gelirse onu kullan; boşsa 'Solederva' fallback
+    # Marka: kaynaktan ne gelirse onu kullan; boşsa 'Solederva' fallback; override varsa onu uygula
     brand_src = text(product.find("Brand"))
     brand = brand_src if brand_src else "Solederva"
+    if brand_override:
+        brand = brand_override
 
     # Ağırlık: boş veya geçersizse 2 olarak ayarla
     weight_raw = text(product.find("Weight")) or text(product.find("weight"))
@@ -246,6 +291,11 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
                 qty_int = 0
             if qty_int < 0:
                 qty_int = 0
+            # Varyant barkodu: stratejiye göre belirle
+            v_barcode = rv.get("raw_barcode", "")
+            if barcode_strategy == 'synthetic':
+                base_for_hash_v = f"{product_code}|{renk}|{beden}|{vcode}|{v_barcode}"
+                v_barcode = generate_synthetic_barcode(base_for_hash_v, prefix=barcode_prefix)
             variants_output.append({
                 "VariantCode": vcode,
                 "VariantQuantity": str(qty_int),
@@ -254,7 +304,7 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
                 "VariantValue1": renk,
                 "VariantName2": "Beden" if beden else "",
                 "VariantValue2": beden,
-                "Barcode": rv.get("raw_barcode", ""),
+                "Barcode": v_barcode,
             })
         quantity = str(sum(int(v.get("VariantQuantity", "0")) for v in variants_output))
     else:
@@ -402,6 +452,7 @@ def main():
     parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
     parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
     parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
+    parser.add_argument("--brand-override", default="", help="Tüm ürünlerde Brand bu değerle değişsin (örn: Markasız)")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -414,7 +465,7 @@ def main():
 
     products_data = []
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
