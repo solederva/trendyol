@@ -1025,7 +1025,7 @@
   <Product>
     <ProductCode>SD015I15489BZ</ProductCode>
     <ProductName>Solederva - CBT First Edition Erkek Ayakkabı BEYAZ - MN015</ProductName>
-    <Quantity>125</Quantity>
+    <Quantity>117</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -1074,7 +1074,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD015I15489BZ-BEYAZ-39</VariantCode>
-        <VariantQuantity>6</VariantQuantity>
+        <VariantQuantity>5</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1084,7 +1084,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD015I15489BZ-BEYAZ-40</VariantCode>
-        <VariantQuantity>26</VariantQuantity>
+        <VariantQuantity>24</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1094,7 +1094,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD015I15489BZ-BEYAZ-41</VariantCode>
-        <VariantQuantity>30</VariantQuantity>
+        <VariantQuantity>28</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1104,7 +1104,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD015I15489BZ-BEYAZ-42</VariantCode>
-        <VariantQuantity>23</VariantQuantity>
+        <VariantQuantity>21</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1114,7 +1114,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD015I15489BZ-BEYAZ-43</VariantCode>
-        <VariantQuantity>8</VariantQuantity>
+        <VariantQuantity>7</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -1157,7 +1157,7 @@
   <Product>
     <ProductCode>SD015I15489HK</ProductCode>
     <ProductName>Solederva - CBT First Edition Erkek Ayakkabı HAKI - MN015</ProductName>
-    <Quantity>188</Quantity>
+    <Quantity>187</Quantity>
     <Price>1650</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -1216,7 +1216,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD015I15489HK-HAKI-40</VariantCode>
-        <VariantQuantity>48</VariantQuantity>
+        <VariantQuantity>47</VariantQuantity>
         <VariantPrice>1650</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>HAKI</VariantValue1>
@@ -2495,6 +2495,534 @@
         <VariantName2>Beden</VariantName2>
         <VariantValue2>46</VariantValue2>
         <Barcode>2199353502571</Barcode>
+      </Variant>
+    </Variants>
+  </Product>
+  <Product>
+    <ProductCode>SD040I15253BZ</ProductCode>
+    <ProductName>Solederva - CBT C-Rey Erkek Ayakkabı BEYAZ - MN040</ProductName>
+    <Quantity>169</Quantity>
+    <Price>2475</Price>
+    <Currency>TL</Currency>
+    <TaxRate>10</TaxRate>
+    <Barcode>2199230190549</Barcode>
+    <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
+    <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
+    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-beyaz-618.jpg</Image1>
+    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-beyaz-617.jpg</Image2>
+    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-beyaz-619.jpg</Image3>
+    <Image4 />
+    <Image5 />
+    <Brand>SDSTEP</Brand>
+    <Model />
+    <Volume />
+    <Weight>2</Weight>
+    <Variants>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-36</VariantCode>
+        <VariantQuantity>9</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>36</VariantValue2>
+        <Barcode>2199313024754</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-37</VariantCode>
+        <VariantQuantity>8</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>37</VariantValue2>
+        <Barcode>2199008088573</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-38</VariantCode>
+        <VariantQuantity>4</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>38</VariantValue2>
+        <Barcode>2199511569040</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-39</VariantCode>
+        <VariantQuantity>12</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>39</VariantValue2>
+        <Barcode>2199328572981</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-40</VariantCode>
+        <VariantQuantity>15</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>40</VariantValue2>
+        <Barcode>2199674749839</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-41</VariantCode>
+        <VariantQuantity>24</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>41</VariantValue2>
+        <Barcode>2199125762578</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-42</VariantCode>
+        <VariantQuantity>16</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>42</VariantValue2>
+        <Barcode>2199115786379</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-43</VariantCode>
+        <VariantQuantity>30</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>43</VariantValue2>
+        <Barcode>2199494112943</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-44</VariantCode>
+        <VariantQuantity>26</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>44</VariantValue2>
+        <Barcode>2199038441232</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-45</VariantCode>
+        <VariantQuantity>20</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>45</VariantValue2>
+        <Barcode>2199975552770</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253BZ-BEYAZ-46</VariantCode>
+        <VariantQuantity>5</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>46</VariantValue2>
+        <Barcode>2199513220352</Barcode>
+      </Variant>
+    </Variants>
+  </Product>
+  <Product>
+    <ProductCode>SD040I15253SH</ProductCode>
+    <ProductName>Solederva - CBT C-Rey Erkek Ayakkabı SIYAH - MN040</ProductName>
+    <Quantity>151</Quantity>
+    <Price>2475</Price>
+    <Currency>TL</Currency>
+    <TaxRate>10</TaxRate>
+    <Barcode>2199874205159</Barcode>
+    <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
+    <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
+    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-siyah-620.jpg</Image1>
+    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-siyah-621.jpg</Image2>
+    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-siyah-622.jpg</Image3>
+    <Image4 />
+    <Image5 />
+    <Brand>SDSTEP</Brand>
+    <Model />
+    <Volume />
+    <Weight>2</Weight>
+    <Variants>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-36</VariantCode>
+        <VariantQuantity>7</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>36</VariantValue2>
+        <Barcode>2199043456610</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-37</VariantCode>
+        <VariantQuantity>5</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>37</VariantValue2>
+        <Barcode>2199970350609</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-38</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>38</VariantValue2>
+        <Barcode>2199250932129</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-39</VariantCode>
+        <VariantQuantity>9</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>39</VariantValue2>
+        <Barcode>2199659420975</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-40</VariantCode>
+        <VariantQuantity>37</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>40</VariantValue2>
+        <Barcode>2199810325019</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-41</VariantCode>
+        <VariantQuantity>35</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>41</VariantValue2>
+        <Barcode>2199225060178</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-42</VariantCode>
+        <VariantQuantity>10</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>42</VariantValue2>
+        <Barcode>2199747552168</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-43</VariantCode>
+        <VariantQuantity>20</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>43</VariantValue2>
+        <Barcode>2199051811449</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-44</VariantCode>
+        <VariantQuantity>12</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>44</VariantValue2>
+        <Barcode>2199331354550</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-45</VariantCode>
+        <VariantQuantity>15</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>45</VariantValue2>
+        <Barcode>2199603329477</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253SH-SIYAH-46</VariantCode>
+        <VariantQuantity>1</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>46</VariantValue2>
+        <Barcode>2199292988061</Barcode>
+      </Variant>
+    </Variants>
+  </Product>
+  <Product>
+    <ProductCode>SD040I15253TB</ProductCode>
+    <ProductName>Solederva - CBT C-Rey Erkek Ayakkabı TABA - MN040</ProductName>
+    <Quantity>229</Quantity>
+    <Price>2475</Price>
+    <Currency>TL</Currency>
+    <TaxRate>10</TaxRate>
+    <Barcode>2199133415213</Barcode>
+    <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
+    <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
+    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-taba-615.jpg</Image1>
+    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-taba-614.jpg</Image2>
+    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cbt-c-rey-erkek-ayakkabi-taba-616.jpg</Image3>
+    <Image4 />
+    <Image5 />
+    <Brand>SDSTEP</Brand>
+    <Model />
+    <Volume />
+    <Weight>2</Weight>
+    <Variants>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-36</VariantCode>
+        <VariantQuantity>5</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>36</VariantValue2>
+        <Barcode>2199922445261</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-37</VariantCode>
+        <VariantQuantity>5</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>37</VariantValue2>
+        <Barcode>2199975144555</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-38</VariantCode>
+        <VariantQuantity>3</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>38</VariantValue2>
+        <Barcode>2199452146522</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-39</VariantCode>
+        <VariantQuantity>17</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>39</VariantValue2>
+        <Barcode>2199291185539</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-40</VariantCode>
+        <VariantQuantity>57</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>40</VariantValue2>
+        <Barcode>2199282284654</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-41</VariantCode>
+        <VariantQuantity>59</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>41</VariantValue2>
+        <Barcode>2199134203642</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-42</VariantCode>
+        <VariantQuantity>20</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>42</VariantValue2>
+        <Barcode>2199055831429</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-43</VariantCode>
+        <VariantQuantity>23</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>43</VariantValue2>
+        <Barcode>2199152853546</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-44</VariantCode>
+        <VariantQuantity>24</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>44</VariantValue2>
+        <Barcode>2199212846839</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-45</VariantCode>
+        <VariantQuantity>14</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>45</VariantValue2>
+        <Barcode>2199065372219</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I15253TB-TABA-46</VariantCode>
+        <VariantQuantity>2</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>TABA</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>46</VariantValue2>
+        <Barcode>2199220746428</Barcode>
+      </Variant>
+    </Variants>
+  </Product>
+  <Product>
+    <ProductCode>SD040I25253SH</ProductCode>
+    <ProductName>Solederva - CST C-Rey Erkek Ayakkabı SIYAH - MN040</ProductName>
+    <Quantity>107</Quantity>
+    <Price>2475</Price>
+    <Currency>TL</Currency>
+    <TaxRate>10</TaxRate>
+    <Barcode>2199030043885</Barcode>
+    <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
+    <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
+    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cst-c-rey-erkek-ayakkabi-siyah-624.jpg</Image1>
+    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cst-c-rey-erkek-ayakkabi-siyah-623.jpg</Image2>
+    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn040-cst-c-rey-erkek-ayakkabi-siyah-625.jpg</Image3>
+    <Image4 />
+    <Image5 />
+    <Brand>SDSTEP</Brand>
+    <Model />
+    <Volume />
+    <Weight>2</Weight>
+    <Variants>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-36</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>36</VariantValue2>
+        <Barcode>2199223041995</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-37</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>37</VariantValue2>
+        <Barcode>2199803237015</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-38</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>38</VariantValue2>
+        <Barcode>2199723891557</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-39</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>39</VariantValue2>
+        <Barcode>2199082403606</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-40</VariantCode>
+        <VariantQuantity>15</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>40</VariantValue2>
+        <Barcode>2199522895312</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-41</VariantCode>
+        <VariantQuantity>13</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>41</VariantValue2>
+        <Barcode>2199806331390</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-42</VariantCode>
+        <VariantQuantity>20</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>42</VariantValue2>
+        <Barcode>2199151633477</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-43</VariantCode>
+        <VariantQuantity>23</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>43</VariantValue2>
+        <Barcode>2199151855138</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-44</VariantCode>
+        <VariantQuantity>21</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>44</VariantValue2>
+        <Barcode>2199241754341</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-45</VariantCode>
+        <VariantQuantity>9</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>45</VariantValue2>
+        <Barcode>2199019516522</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD040I25253SH-SIYAH-46</VariantCode>
+        <VariantQuantity>6</VariantQuantity>
+        <VariantPrice>2475</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>46</VariantValue2>
+        <Barcode>2199333122539</Barcode>
       </Variant>
     </Variants>
   </Product>
@@ -6741,7 +7269,7 @@
   <Product>
     <ProductCode>SD229F2340SH</ProductCode>
     <ProductName>Solederva - FST Crow Erkek Bot SIYAH - MN229</ProductName>
-    <Quantity>234</Quantity>
+    <Quantity>233</Quantity>
     <Price>2970</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -6800,7 +7328,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD229F2340SH-SIYAH-44</VariantCode>
-        <VariantQuantity>5</VariantQuantity>
+        <VariantQuantity>4</VariantQuantity>
         <VariantPrice>2970</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -7059,7 +7587,7 @@
   <Product>
     <ProductCode>SD2404S2031BJ01</ProductCode>
     <ProductName>Solederva - SST Castle Erkek Ayakkabı BEJ - MN2404</ProductName>
-    <Quantity>46</Quantity>
+    <Quantity>44</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -7078,7 +7606,7 @@
     <Variants>
       <Variant>
         <VariantCode>SD2404S2031BJ01-BEJ-39</VariantCode>
-        <VariantQuantity>1</VariantQuantity>
+        <VariantQuantity>0</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
@@ -7098,7 +7626,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD2404S2031BJ01-BEJ-41</VariantCode>
-        <VariantQuantity>16</VariantQuantity>
+        <VariantQuantity>15</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
@@ -7217,6 +7745,252 @@
         <VariantName2>Beden</VariantName2>
         <VariantValue2>44</VariantValue2>
         <Barcode>2199142145057</Barcode>
+      </Variant>
+    </Variants>
+  </Product>
+  <Product>
+    <ProductCode>SD2407I12047BZBJ</ProductCode>
+    <ProductName>Solederva - CBT Star-X Erkek Spor Ayakkabı / BEJ BEYAZ - MN2407</ProductName>
+    <Quantity>120</Quantity>
+    <Price>3135</Price>
+    <Currency>TL</Currency>
+    <TaxRate>10</TaxRate>
+    <Barcode>2199084101708</Barcode>
+    <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
+    <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
+    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-beyaz-bej-632.jpeg</Image1>
+    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-beyaz-bej-633.jpeg</Image2>
+    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-beyaz-bej-634.jpeg</Image3>
+    <Image4 />
+    <Image5 />
+    <Brand>SDSTEP</Brand>
+    <Model />
+    <Volume />
+    <Weight>2</Weight>
+    <Variants>
+      <Variant>
+        <VariantCode>SD2407I12047BZBJ-BEYAZ-BEJ-39</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-BEJ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>39</VariantValue2>
+        <Barcode>2199575025032</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047BZBJ-BEYAZ-BEJ-40</VariantCode>
+        <VariantQuantity>17</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-BEJ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>40</VariantValue2>
+        <Barcode>2199005551247</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047BZBJ-BEYAZ-BEJ-41</VariantCode>
+        <VariantQuantity>26</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-BEJ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>41</VariantValue2>
+        <Barcode>2199930361362</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047BZBJ-BEYAZ-BEJ-42</VariantCode>
+        <VariantQuantity>25</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-BEJ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>42</VariantValue2>
+        <Barcode>2199457637452</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047BZBJ-BEYAZ-BEJ-43</VariantCode>
+        <VariantQuantity>36</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-BEJ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>43</VariantValue2>
+        <Barcode>2199095639016</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047BZBJ-BEYAZ-BEJ-44</VariantCode>
+        <VariantQuantity>16</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-BEJ</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>44</VariantValue2>
+        <Barcode>2199969024450</Barcode>
+      </Variant>
+    </Variants>
+  </Product>
+  <Product>
+    <ProductCode>SD2407I12047GRL52</ProductCode>
+    <ProductName>Solederva - CBT Star-X Erkek Spor Ayakkabı BEYAZ/GRI - MN2407</ProductName>
+    <Quantity>203</Quantity>
+    <Price>3135</Price>
+    <Currency>TL</Currency>
+    <TaxRate>10</TaxRate>
+    <Barcode>2199233840892</Barcode>
+    <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
+    <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
+    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-beyaz-gri-627.jpeg</Image1>
+    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-beyaz-gri-626.jpeg</Image2>
+    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-beyaz-gri-628.jpeg</Image3>
+    <Image4 />
+    <Image5 />
+    <Brand>SDSTEP</Brand>
+    <Model />
+    <Volume />
+    <Weight>2</Weight>
+    <Variants>
+      <Variant>
+        <VariantCode>SD2407I12047GRL52-BEYAZ-GRI-39</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-GRI</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>39</VariantValue2>
+        <Barcode>2199276358071</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047GRL52-BEYAZ-GRI-40</VariantCode>
+        <VariantQuantity>39</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-GRI</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>40</VariantValue2>
+        <Barcode>2199301484416</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047GRL52-BEYAZ-GRI-41</VariantCode>
+        <VariantQuantity>49</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-GRI</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>41</VariantValue2>
+        <Barcode>2199183856004</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047GRL52-BEYAZ-GRI-42</VariantCode>
+        <VariantQuantity>46</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-GRI</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>42</VariantValue2>
+        <Barcode>2199538426357</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047GRL52-BEYAZ-GRI-43</VariantCode>
+        <VariantQuantity>43</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-GRI</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>43</VariantValue2>
+        <Barcode>2199031491203</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047GRL52-BEYAZ-GRI-44</VariantCode>
+        <VariantQuantity>26</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>BEYAZ-GRI</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>44</VariantValue2>
+        <Barcode>2199001792644</Barcode>
+      </Variant>
+    </Variants>
+  </Product>
+  <Product>
+    <ProductCode>SD2407I12047SH</ProductCode>
+    <ProductName>Solederva - CBT Star-X Erkek Spor Ayakkabı SIYAH - MN2407</ProductName>
+    <Quantity>178</Quantity>
+    <Price>3135</Price>
+    <Currency>TL</Currency>
+    <TaxRate>10</TaxRate>
+    <Barcode>2199283962711</Barcode>
+    <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
+    <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
+    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-siyah-629.jpeg</Image1>
+    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-siyah-630.jpeg</Image2>
+    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2407-cbt-star-x-erkek-spor-ayakkabi-siyah-631.jpeg</Image3>
+    <Image4 />
+    <Image5 />
+    <Brand>SDSTEP</Brand>
+    <Model />
+    <Volume />
+    <Weight>2</Weight>
+    <Variants>
+      <Variant>
+        <VariantCode>SD2407I12047SH-SIYAH-39</VariantCode>
+        <VariantQuantity>0</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>39</VariantValue2>
+        <Barcode>2199190448209</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047SH-SIYAH-40</VariantCode>
+        <VariantQuantity>30</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>40</VariantValue2>
+        <Barcode>2199411315426</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047SH-SIYAH-41</VariantCode>
+        <VariantQuantity>42</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>41</VariantValue2>
+        <Barcode>2199310202452</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047SH-SIYAH-42</VariantCode>
+        <VariantQuantity>36</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>42</VariantValue2>
+        <Barcode>2199907750335</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047SH-SIYAH-43</VariantCode>
+        <VariantQuantity>41</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>43</VariantValue2>
+        <Barcode>2199480425750</Barcode>
+      </Variant>
+      <Variant>
+        <VariantCode>SD2407I12047SH-SIYAH-44</VariantCode>
+        <VariantQuantity>29</VariantQuantity>
+        <VariantPrice>3135</VariantPrice>
+        <VariantName1>Renk</VariantName1>
+        <VariantValue1>SIYAH</VariantValue1>
+        <VariantName2>Beden</VariantName2>
+        <VariantValue2>44</VariantValue2>
+        <Barcode>2199291026207</Barcode>
       </Variant>
     </Variants>
   </Product>
@@ -7755,7 +8529,7 @@
   <Product>
     <ProductCode>SD2425T12015BJ01</ProductCode>
     <ProductName>Solederva - TBT Erkek Ayakkabı BEJ - MN2425</ProductName>
-    <Quantity>337</Quantity>
+    <Quantity>336</Quantity>
     <Price>1650</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -7794,7 +8568,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD2425T12015BJ01-BEJ-41</VariantCode>
-        <VariantQuantity>41</VariantQuantity>
+        <VariantQuantity>40</VariantQuantity>
         <VariantPrice>1650</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
@@ -8265,7 +9039,7 @@
   <Product>
     <ProductCode>SD251C15394BZ</ProductCode>
     <ProductName>Solederva - CBT Mirror Erkek Ayakkabı BEYAZ - MN251</ProductName>
-    <Quantity>151</Quantity>
+    <Quantity>150</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -8354,7 +9128,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD251C15394BZ-BEYAZ-43</VariantCode>
-        <VariantQuantity>12</VariantQuantity>
+        <VariantQuantity>11</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -8661,7 +9435,7 @@
   <Product>
     <ProductCode>SD251C15394TB</ProductCode>
     <ProductName>Solederva - CBT Mirror Erkek Ayakkabı TABA - MN251</ProductName>
-    <Quantity>369</Quantity>
+    <Quantity>368</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -8750,7 +9524,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD251C15394TB-TABA-43</VariantCode>
-        <VariantQuantity>14</VariantQuantity>
+        <VariantQuantity>13</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>TABA</VariantValue1>
@@ -8793,7 +9567,7 @@
   <Product>
     <ProductCode>SD251C25394SH</ProductCode>
     <ProductName>Solederva - CST Mirror Erkek Ayakkabı SIYAH - MN251</ProductName>
-    <Quantity>84</Quantity>
+    <Quantity>83</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -8892,7 +9666,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD251C25394SH-SIYAH-44</VariantCode>
-        <VariantQuantity>16</VariantQuantity>
+        <VariantQuantity>15</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -9057,7 +9831,7 @@
   <Product>
     <ProductCode>SD251C35394TB</ProductCode>
     <ProductName>Solederva - CRT Mirror Erkek Ayakkabı TABA - MN251</ProductName>
-    <Quantity>105</Quantity>
+    <Quantity>104</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9176,7 +9950,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD251C35394TB-TABA-46</VariantCode>
-        <VariantQuantity>13</VariantQuantity>
+        <VariantQuantity>12</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>TABA</VariantValue1>
@@ -9321,7 +10095,7 @@
   <Product>
     <ProductCode>SD253C15394SH</ProductCode>
     <ProductName>Solederva - CBT Mirror Non Erkek Ayakkabı SIYAH - MN253</ProductName>
-    <Quantity>218</Quantity>
+    <Quantity>217</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -9400,7 +10174,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD253C15394SH-SIYAH-42</VariantCode>
-        <VariantQuantity>31</VariantQuantity>
+        <VariantQuantity>30</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -10245,7 +11019,7 @@
   <Product>
     <ProductCode>SD257F15394BJ01</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı BEJ - MN257</ProductName>
-    <Quantity>139</Quantity>
+    <Quantity>137</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10304,7 +11078,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F15394BJ01-BEJ-40</VariantCode>
-        <VariantQuantity>21</VariantQuantity>
+        <VariantQuantity>20</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
@@ -10334,7 +11108,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F15394BJ01-BEJ-43</VariantCode>
-        <VariantQuantity>26</VariantQuantity>
+        <VariantQuantity>25</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ</VariantValue1>
@@ -10377,7 +11151,7 @@
   <Product>
     <ProductCode>SD257F15394BZ</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı BEYAZ - MN257</ProductName>
-    <Quantity>738</Quantity>
+    <Quantity>729</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10436,7 +11210,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F15394BZ-BEYAZ-40</VariantCode>
-        <VariantQuantity>135</VariantQuantity>
+        <VariantQuantity>133</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -10456,7 +11230,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F15394BZ-BEYAZ-42</VariantCode>
-        <VariantQuantity>137</VariantQuantity>
+        <VariantQuantity>133</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -10466,7 +11240,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F15394BZ-BEYAZ-43</VariantCode>
-        <VariantQuantity>84</VariantQuantity>
+        <VariantQuantity>82</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -10476,7 +11250,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F15394BZ-BEYAZ-44</VariantCode>
-        <VariantQuantity>109</VariantQuantity>
+        <VariantQuantity>108</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -10509,7 +11283,7 @@
   <Product>
     <ProductCode>SD257F15394SH</ProductCode>
     <ProductName>Solederva - CBT Estrella Erkek Ayakkabı SIYAH - MN257</ProductName>
-    <Quantity>404</Quantity>
+    <Quantity>403</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10588,7 +11362,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F15394SH-SIYAH-42</VariantCode>
-        <VariantQuantity>14</VariantQuantity>
+        <VariantQuantity>13</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -10773,7 +11547,7 @@
   <Product>
     <ProductCode>SD257F25394SH</ProductCode>
     <ProductName>Solederva - CST Estrella Erkek Ayakkabı SIYAH - MN257</ProductName>
-    <Quantity>465</Quantity>
+    <Quantity>459</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10822,7 +11596,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F25394SH-SIYAH-39</VariantCode>
-        <VariantQuantity>108</VariantQuantity>
+        <VariantQuantity>107</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -10852,7 +11626,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F25394SH-SIYAH-42</VariantCode>
-        <VariantQuantity>139</VariantQuantity>
+        <VariantQuantity>138</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -10862,7 +11636,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD257F25394SH-SIYAH-43</VariantCode>
-        <VariantQuantity>53</VariantQuantity>
+        <VariantQuantity>49</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -11525,7 +12299,7 @@
   <Product>
     <ProductCode>SD258I15394BZ</ProductCode>
     <ProductName>Solederva - CBT Roma Erkek Bot BEYAZ - MN258</ProductName>
-    <Quantity>208</Quantity>
+    <Quantity>206</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -11594,7 +12368,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD258I15394BZ-BEYAZ-41</VariantCode>
-        <VariantQuantity>44</VariantQuantity>
+        <VariantQuantity>42</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -11657,7 +12431,7 @@
   <Product>
     <ProductCode>SD258I15394SH</ProductCode>
     <ProductName>Solederva - CBT Roma Erkek Bot SIYAH - MN258</ProductName>
-    <Quantity>131</Quantity>
+    <Quantity>130</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -11746,7 +12520,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD258I15394SH-SIYAH-43</VariantCode>
-        <VariantQuantity>31</VariantQuantity>
+        <VariantQuantity>30</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -11789,7 +12563,7 @@
   <Product>
     <ProductCode>SD258I15394TB</ProductCode>
     <ProductName>Solederva - CBT Roma Erkek Bot TABA - MN258</ProductName>
-    <Quantity>162</Quantity>
+    <Quantity>177</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -11858,7 +12632,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD258I15394TB-TABA-41</VariantCode>
-        <VariantQuantity>0</VariantQuantity>
+        <VariantQuantity>15</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>TABA</VariantValue1>
@@ -13077,7 +13851,7 @@
   <Product>
     <ProductCode>SD979I3211522BZ</ProductCode>
     <ProductName>Solederva - Santoni CRT Spor Erkek Ayakkabı BEYAZ - MN979</ProductName>
-    <Quantity>121</Quantity>
+    <Quantity>114</Quantity>
     <Price>2145</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -13146,7 +13920,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD979I3211522BZ-BEYAZ-41</VariantCode>
-        <VariantQuantity>23</VariantQuantity>
+        <VariantQuantity>20</VariantQuantity>
         <VariantPrice>2145</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -13156,7 +13930,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD979I3211522BZ-BEYAZ-42</VariantCode>
-        <VariantQuantity>39</VariantQuantity>
+        <VariantQuantity>37</VariantQuantity>
         <VariantPrice>2145</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -13166,7 +13940,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD979I3211522BZ-BEYAZ-43</VariantCode>
-        <VariantQuantity>22</VariantQuantity>
+        <VariantQuantity>20</VariantQuantity>
         <VariantPrice>2145</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -13961,7 +14735,7 @@
   <Product>
     <ProductCode>SD987I2205513SH</ProductCode>
     <ProductName>Solederva - CST Erkek Ayakkabı SIYAH - MN987</ProductName>
-    <Quantity>237</Quantity>
+    <Quantity>235</Quantity>
     <Price>1650</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -14030,7 +14804,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD987I2205513SH-SIYAH-41</VariantCode>
-        <VariantQuantity>21</VariantQuantity>
+        <VariantQuantity>20</VariantQuantity>
         <VariantPrice>1650</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -14060,7 +14834,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD987I2205513SH-SIYAH-44</VariantCode>
-        <VariantQuantity>29</VariantQuantity>
+        <VariantQuantity>28</VariantQuantity>
         <VariantPrice>1650</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
