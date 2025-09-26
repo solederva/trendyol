@@ -2633,7 +2633,7 @@
   <Product>
     <ProductCode>SD040I15253SH</ProductCode>
     <ProductName>Solederva - CBT C-Rey Erkek Ayakkabı SIYAH - MN040</ProductName>
-    <Quantity>145</Quantity>
+    <Quantity>144</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -2742,7 +2742,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD040I15253SH-SIYAH-45</VariantCode>
-        <VariantQuantity>14</VariantQuantity>
+        <VariantQuantity>13</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
@@ -3673,7 +3673,7 @@
   <Product>
     <ProductCode>SD061I15489TB</ProductCode>
     <ProductName>Solederva - CBT Rex Erkek Ayakkabı TABA - MN061</ProductName>
-    <Quantity>224</Quantity>
+    <Quantity>223</Quantity>
     <Price>2310</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -3742,7 +3742,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD061I15489TB-TABA-41</VariantCode>
-        <VariantQuantity>60</VariantQuantity>
+        <VariantQuantity>59</VariantQuantity>
         <VariantPrice>2310</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>TABA</VariantValue1>
@@ -3979,7 +3979,7 @@
   <Product>
     <ProductCode>SD069I1225140KE</ProductCode>
     <ProductName>Solederva - CRT Harmany Erkek Bot KAHVE - MN069</ProductName>
-    <Quantity>74</Quantity>
+    <Quantity>73</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -3998,7 +3998,7 @@
     <Variants>
       <Variant>
         <VariantCode>SD069I1225140KE-KAHVERENGI-39</VariantCode>
-        <VariantQuantity>15</VariantQuantity>
+        <VariantQuantity>14</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>KAHVERENGI</VariantValue1>
@@ -9963,7 +9963,7 @@
   <Product>
     <ProductCode>SD253C15394BZ</ProductCode>
     <ProductName>Solederva - CBT Mirror Non Erkek Ayakkabı BEYAZ - MN253</ProductName>
-    <Quantity>361</Quantity>
+    <Quantity>360</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10032,7 +10032,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD253C15394BZ-BEYAZ-41</VariantCode>
-        <VariantQuantity>63</VariantQuantity>
+        <VariantQuantity>62</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
@@ -10095,7 +10095,7 @@
   <Product>
     <ProductCode>SD253C15394SH</ProductCode>
     <ProductName>Solederva - CBT Mirror Non Erkek Ayakkabı SIYAH - MN253</ProductName>
-    <Quantity>195</Quantity>
+    <Quantity>194</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -10164,7 +10164,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD253C15394SH-SIYAH-41</VariantCode>
-        <VariantQuantity>43</VariantQuantity>
+        <VariantQuantity>42</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
