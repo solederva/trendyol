@@ -4143,7 +4143,7 @@
   <Product>
     <ProductCode>SD069I1225140TB</ProductCode>
     <ProductName>Solederva - CRT Harmany Erkek Bot TABA - MN069</ProductName>
-    <Quantity>209</Quantity>
+    <Quantity>208</Quantity>
     <Price>2475</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -4212,7 +4212,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD069I1225140TB-TABA-44</VariantCode>
-        <VariantQuantity>17</VariantQuantity>
+        <VariantQuantity>16</VariantQuantity>
         <VariantPrice>2475</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>TABA</VariantValue1>
@@ -12827,7 +12827,7 @@
   <Product>
     <ProductCode>SD271I16113BZ</ProductCode>
     <ProductName>Solederva - CRT Ariaso Erkek Ayakkabı BEYAZ - MN271</ProductName>
-    <Quantity>15</Quantity>
+    <Quantity>14</Quantity>
     <Price>2640</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -12906,7 +12906,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD271I16113BZ-BEYAZ-44</VariantCode>
-        <VariantQuantity>11</VariantQuantity>
+        <VariantQuantity>10</VariantQuantity>
         <VariantPrice>2640</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEYAZ</VariantValue1>
