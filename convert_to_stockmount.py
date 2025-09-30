@@ -4,6 +4,7 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from typing import Optional
 import hashlib
+import re
 
 # Kaynak alan -> Stockmount alan mapping açıklaması:
 # Product_code -> ProductCode (ürün ana kodu)
@@ -234,12 +235,28 @@ def apply_title_template(original_name: str, template: str) -> str:
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
 
-def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, brand_override: str = ""):
+def sanitize_image_url(url: str) -> str:
+    if not url:
+        return url
+    u = url.strip().strip('"').strip("'")
+    # İç boşlukları %20 ile değiştir
+    u = re.sub(r"\s+", "%20", u)
+    return u
+
+def cleanse_banned_terms(text_value: str, banned_map: dict) -> str:
+    if not text_value:
+        return text_value
+    out = text_value
+    for pat, repl in banned_map.items():
+        out = re.sub(pat, repl, out, flags=re.IGNORECASE)
+    return out
+
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, brand_override: str = "", banned_map: dict = None, sanitize_images: bool = False):
     product_code_raw = text(product.find("Product_code")) or text(product.find("Product_id"))
     product_code = normalize_product_code_prefix(product_code_raw)
     name = text(product.find("Name"))
     total_stock = text(product.find("Stock"))
-    price = text(product.find("Price"))
+    price = text(product.find("buying_price")) or text(product.find("Price"))
     currency = CURRENCY_MAP.get(text(product.find("CurrencyType")) or "", "TL")
     tax = text(product.find("Tax"))
     barcode = text(product.find("Barcode"))
@@ -247,6 +264,9 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     description = description_elem.text if description_elem is not None and description_elem.text else ""
     category_path = build_category(product)
     images = extract_images(product)
+    if sanitize_images:
+        for k, v in list(images.items()):
+            images[k] = sanitize_image_url(v)
     # Marka: kaynaktan ne gelirse onu kullan; boşsa 'Solederva' fallback; override varsa onu uygula
     brand_src = text(product.find("Brand"))
     brand = brand_src if brand_src else "Solederva"
@@ -266,6 +286,11 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
         except Exception:
             return "2"
     weight = norm_weight(weight_raw)
+
+    # Yasaklı kelime temizlikleri (Name & Description başta uygulanmalı ki title template sonrası da temiz olsun)
+    if banned_map:
+        name = cleanse_banned_terms(name, banned_map)
+        description = cleanse_banned_terms(description, banned_map)
 
     raw_variants = parse_variants(product)
     has_variants = variant_mode and len(raw_variants) > 0
@@ -463,6 +488,8 @@ def main():
     parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
     parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
     parser.add_argument("--brand-override", default="", help="Tüm ürünlerde Brand bu değerle değişsin (örn: Markasız)")
+    parser.add_argument("--sanitize-images", action="store_true", help="Image URL'lerdeki boşlukları %20 ile değiştir")
+    parser.add_argument("--banned-term-replace", action="append", default=[], help="Yasaklı kelime değişimi: ORJ=YENI biçiminde. Çoklu kullanılabilir.")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -474,8 +501,17 @@ def main():
     root = tree.getroot()
 
     products_data = []
+    banned_map = {}
+    for item in args.banned_term_replace:
+        if '=' in item:
+            src, repl = item.split('=', 1)
+            src = src.strip()
+            repl = repl.strip()
+            if src:
+                pattern = r"\b" + re.escape(src) + r"\b"
+                banned_map[pattern] = repl
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override, banned_map=banned_map if banned_map else None, sanitize_images=args.sanitize_images)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
