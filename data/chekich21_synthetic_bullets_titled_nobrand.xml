@@ -14981,145 +14981,13 @@
     </Variants>
   </Product>
   <Product>
-    <ProductCode>SDKCMRTBN001SH</ProductCode>
-    <ProductName>Solederva - CHK Memory Ortopedik Tabanlık SIYAH - MR001</ProductName>
-    <Quantity>550</Quantity>
-    <Price>60.5</Price>
-    <Currency>TL</Currency>
-    <TaxRate>10</TaxRate>
-    <Barcode>2199655831454</Barcode>
-    <Category><![CDATA[AKSESUAR > TABANLIK]]></Category>
-    <Description><![CDATA[<ul><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <ul class='details'><li></li><li>Kategori: Yardımcı Malzemeler</li><li>Ürün Malzemesi : Süet</li><li>İç Astar : %100 Pamuk</li><li>Topuk Boyu : 3 Cm</li><li>Taban Materyali : Yok</li><li>Ürün Detay : </li></ul>]]></Description>
-    <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mr001-chekich-memory-ortopedik-tabanlik-siyah-219.jpg</Image1>
-    <Image2>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mr001-chekich-memory-ortopedik-tabanlik-siyah-218.jpg</Image2>
-    <Image3>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mr001-chekich-memory-ortopedik-tabanlik-siyah-220.jpg</Image3>
-    <Image4 />
-    <Image5 />
-    <Brand>SDSTEP</Brand>
-    <Model />
-    <Volume />
-    <Weight>2</Weight>
-    <Variants>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-36</VariantCode>
-        <VariantQuantity>28</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>36</VariantValue2>
-        <Barcode>2199263668800</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-37</VariantCode>
-        <VariantQuantity>13</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>37</VariantValue2>
-        <Barcode>2199130051230</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-38</VariantCode>
-        <VariantQuantity>17</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>38</VariantValue2>
-        <Barcode>2199524157449</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-39</VariantCode>
-        <VariantQuantity>18</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>39</VariantValue2>
-        <Barcode>2199586672089</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-40</VariantCode>
-        <VariantQuantity>80</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>40</VariantValue2>
-        <Barcode>2199004304134</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-41</VariantCode>
-        <VariantQuantity>157</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>41</VariantValue2>
-        <Barcode>2199330350577</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-42</VariantCode>
-        <VariantQuantity>107</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>42</VariantValue2>
-        <Barcode>2199152725355</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-43</VariantCode>
-        <VariantQuantity>69</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>43</VariantValue2>
-        <Barcode>2199912719266</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-44</VariantCode>
-        <VariantQuantity>57</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>44</VariantValue2>
-        <Barcode>2199105052859</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-45</VariantCode>
-        <VariantQuantity>0</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>45</VariantValue2>
-        <Barcode>2199403054265</Barcode>
-      </Variant>
-      <Variant>
-        <VariantCode>SDKCMRTBN001SH-SIYAH-46</VariantCode>
-        <VariantQuantity>4</VariantQuantity>
-        <VariantPrice>60.5</VariantPrice>
-        <VariantName1>Renk</VariantName1>
-        <VariantValue1>SIYAH</VariantValue1>
-        <VariantName2>Beden</VariantName2>
-        <VariantValue2>46</VariantValue2>
-        <Barcode>2199931411523</Barcode>
-      </Variant>
-    </Variants>
-  </Product>
-  <Product>
-    <ProductCode>SD2505K15061BJBJ</ProductCode>
+    <ProductCode>2694</ProductCode>
     <ProductName>Solederva - Keten Erkek Ayakkabı BEJ/BEJ - MN2505</ProductName>
     <Quantity>42</Quantity>
     <Price>660</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
-    <Barcode>2199249094234</Barcode>
+    <Barcode>2199644575505</Barcode>
     <Category><![CDATA[ERKEK AYAKKABI > SPOR AYAKKABI]]></Category>
     <Description><![CDATA[<ul><li>Vegan Deri Malzeme</li><li>Ortopedik Destekli İç Taban</li><li>Nefes Alabilir Pamuk Astar</li><li>Konfor Topuk Tasarımı</li></ul> <p>Ürün Malzemesi : %100 Vegan Deri<br />İç Astar : %100 Pamuk<br />Topuk Uzunluğu : 3,5 CM</p> <p><strong>Yüksek kaliteli</strong> Mooien ürünleri sizin için tasarlanmıştır. Ürünlerimizde <strong>Vegan deri</strong> kullanarak size, ailenize ve <strong>doğaya</strong> saygı duyuyoruz.</p> <p>Ürünlerimizin tamamı <strong>ortopediktir</strong> ve insan sağlığına uygun olarak tasarlanmıştır.</p> <p><strong>Uzun ömürlü Mooien ayakkabılarını hemen satın alın.</strong> Kaliteli ürünleri keşfedin ve <strong>doğaya</strong> katkıda bulunun.</p>]]></Description>
     <Image1>http://cdn1.xmlbankasi.com/p1/xbirhwryqfpe/image/data/resimler/mn2505-keten-erkek-ayakkabi-bej-bej-345.jpg</Image1>
@@ -15133,54 +15001,54 @@
     <Weight>2</Weight>
     <Variants>
       <Variant>
-        <VariantCode>SD2505K15061BJBJ-BEJ-BEJ-40</VariantCode>
+        <VariantCode>2694-BEJ-BEJ-40</VariantCode>
         <VariantQuantity>12</VariantQuantity>
         <VariantPrice>660</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ-BEJ</VariantValue1>
         <VariantName2>Beden</VariantName2>
         <VariantValue2>40</VariantValue2>
-        <Barcode>2199294322702</Barcode>
+        <Barcode>2199587338434</Barcode>
       </Variant>
       <Variant>
-        <VariantCode>SD2505K15061BJBJ-BEJ-BEJ-41</VariantCode>
+        <VariantCode>2694-BEJ-BEJ-41</VariantCode>
         <VariantQuantity>10</VariantQuantity>
         <VariantPrice>660</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ-BEJ</VariantValue1>
         <VariantName2>Beden</VariantName2>
         <VariantValue2>41</VariantValue2>
-        <Barcode>2199712622704</Barcode>
+        <Barcode>2199950305995</Barcode>
       </Variant>
       <Variant>
-        <VariantCode>SD2505K15061BJBJ-BEJ-BEJ-42</VariantCode>
+        <VariantCode>2694-BEJ-BEJ-42</VariantCode>
         <VariantQuantity>10</VariantQuantity>
         <VariantPrice>660</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ-BEJ</VariantValue1>
         <VariantName2>Beden</VariantName2>
         <VariantValue2>42</VariantValue2>
-        <Barcode>2199523522828</Barcode>
+        <Barcode>2199706274254</Barcode>
       </Variant>
       <Variant>
-        <VariantCode>SD2505K15061BJBJ-BEJ-BEJ-43</VariantCode>
+        <VariantCode>2694-BEJ-BEJ-43</VariantCode>
         <VariantQuantity>5</VariantQuantity>
         <VariantPrice>660</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ-BEJ</VariantValue1>
         <VariantName2>Beden</VariantName2>
         <VariantValue2>43</VariantValue2>
-        <Barcode>2199309769102</Barcode>
+        <Barcode>2199320789608</Barcode>
       </Variant>
       <Variant>
-        <VariantCode>SD2505K15061BJBJ-BEJ-BEJ-44</VariantCode>
+        <VariantCode>2694-BEJ-BEJ-44</VariantCode>
         <VariantQuantity>5</VariantQuantity>
         <VariantPrice>660</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>BEJ-BEJ</VariantValue1>
         <VariantName2>Beden</VariantName2>
         <VariantValue2>44</VariantValue2>
-        <Barcode>2199495405389</Barcode>
+        <Barcode>2199899381111</Barcode>
       </Variant>
     </Variants>
   </Product>
