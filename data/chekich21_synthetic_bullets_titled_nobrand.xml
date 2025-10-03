@@ -371,7 +371,7 @@
   <Product>
     <ProductCode>SD003F15490SH</ProductCode>
     <ProductName>Solederva - CBT Pelle Classica Erkek Ayakkabı SIYAH - MN003</ProductName>
-    <Quantity>240</Quantity>
+    <Quantity>239</Quantity>
     <Price>715</Price>
     <Currency>TL</Currency>
     <TaxRate>10</TaxRate>
@@ -450,7 +450,7 @@
       </Variant>
       <Variant>
         <VariantCode>SD003F15490SH-SIYAH-44</VariantCode>
-        <VariantQuantity>20</VariantQuantity>
+        <VariantQuantity>19</VariantQuantity>
         <VariantPrice>715</VariantPrice>
         <VariantName1>Renk</VariantName1>
         <VariantValue1>SIYAH</VariantValue1>
