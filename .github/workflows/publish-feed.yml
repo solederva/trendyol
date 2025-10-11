@@ -41,7 +41,7 @@ jobs:
         run: |
           python convert_to_stockmount.py \
             --input data/source.xml \
-            --output data/chekich.xml \
+            --output data/chekich21_synthetic_bullets_titled_nobrand.xml \
             --variant-mode \
             --barcode-strategy synthetic \
             --add-bullets \
@@ -55,7 +55,7 @@ jobs:
         run: |
           git config user.name "feed-bot"
           git config user.email "actions@github.com"
-          TARGET=data/chekich.xml
+          TARGET=data/chekich21_synthetic_bullets_titled_nobrand.xml
           if git diff --quiet "$TARGET"; then
             echo "Değişiklik yok, commit atlanıyor.";
             exit 0
