@@ -235,17 +235,17 @@ def apply_title_template(original_name: str, template: str) -> str:
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
 
-def sanitize_image_url(url: str, bg_param: str = "") -> str:
+def sanitize_image_url(url: str, version_param: str = "") -> str:
     if not url:
         return url
     u = url.strip().strip('"').strip("'")
     # İç boşlukları %20 ile değiştir
     u = re.sub(r"\s+", "%20", u)
-    # Arka fon parametresi ekle (eğer varsa)
-    if bg_param and '?' not in u:
-        u += f"?{bg_param}"
-    elif bg_param and '?' in u:
-        u += f"&{bg_param}"
+    # Versiyon parametresi ekle
+    if version_param and '?' not in u:
+        u += f"?{version_param}"
+    elif version_param and '?' in u:
+        u += f"&{version_param}"
     return u
 
 def cleanse_banned_terms(text_value: str, banned_map: dict) -> str:
@@ -256,7 +256,7 @@ def cleanse_banned_terms(text_value: str, banned_map: dict) -> str:
         out = re.sub(pat, repl, out, flags=re.IGNORECASE)
     return out
 
-def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, brand_override: str = "", banned_map: dict = None, sanitize_images: bool = False, image_bg: str = ""):
+def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: str, barcode_prefix: str, add_bullets: bool, title_template: str, brand_override: str = "", banned_map: dict = None, sanitize_images: bool = False, image_version_param: str = ""):
     product_code_raw = text(product.find("Product_code")) or text(product.find("Product_id"))
     product_code = normalize_product_code_prefix(product_code_raw)
     name = text(product.find("Name"))
@@ -271,7 +271,7 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     images = extract_images(product)
     if sanitize_images:
         for k, v in list(images.items()):
-            images[k] = sanitize_image_url(v, image_bg)
+            images[k] = sanitize_image_url(v, image_version_param)
     # Marka: kaynaktan ne gelirse onu kullan; boşsa 'Solederva' fallback; override varsa onu uygula
     brand_src = text(product.find("Brand"))
     brand = brand_src if brand_src else "Solederva"
@@ -494,8 +494,8 @@ def main():
     parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
     parser.add_argument("--brand-override", default="", help="Tüm ürünlerde Brand bu değerle değişsin (örn: Markasız)")
     parser.add_argument("--sanitize-images", action="store_true", help="Image URL'lerdeki boşlukları %20 ile değiştir")
+    parser.add_argument("--image-version-param", default="", help="Image URL'lerine eklenecek versiyon parametresi (örn: v=1)")
     parser.add_argument("--banned-term-replace", action="append", default=[], help="Yasaklı kelime değişimi: ORJ=YENI biçiminde. Çoklu kullanılabilir.")
-    parser.add_argument("--image-bg", default="", help="Image URL'lerine arka fon parametresi ekle (örn: bg=white)")
     args = parser.parse_args()
 
     source_path = Path(args.input)
@@ -517,7 +517,7 @@ def main():
                 pattern = r"\b" + re.escape(src) + r"\b"
                 banned_map[pattern] = repl
     for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override, banned_map=banned_map if banned_map else None, sanitize_images=args.sanitize_images, image_bg=args.image_bg)
+        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override, banned_map=banned_map if banned_map else None, sanitize_images=args.sanitize_images, image_version_param=args.image_version_param)
         products_data.append(pdata)
 
     out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
