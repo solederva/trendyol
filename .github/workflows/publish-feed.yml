@@ -28,19 +28,34 @@ jobs:
         run: |
           echo "No external deps"
 
-      - name: Download source feed
+      - name: Download source feeds
         run: |
+          # İlk kaynak
           if [ -z "${{ secrets.SOURCE_FEED_URL }}" ]; then
             echo "SOURCE_FEED_URL secret tanımlı değil. Varsayılan data/source.xml kullanılacak." >&2
           else
-            echo "Remote kaynaktan indiriliyor: ${{ secrets.SOURCE_FEED_URL }}" >&2
+            echo "İlk kaynaktan indiriliyor: ${{ secrets.SOURCE_FEED_URL }}" >&2
             curl -L --fail --silent --show-error "${{ secrets.SOURCE_FEED_URL }}" -o data/source.xml
+          fi
+          
+          # İkinci kaynak (yeni ayakkabılar)
+          if [ -n "${{ secrets.SECOND_SOURCE_FEED_URL }}" ]; then
+            echo "İkinci kaynaktan indiriliyor: ${{ secrets.SECOND_SOURCE_FEED_URL }}" >&2
+            curl -L --fail --silent --show-error "${{ secrets.SECOND_SOURCE_FEED_URL }}" -o data/second_source.xml
+          else
+            echo "SECOND_SOURCE_FEED_URL secret tanımlı değil. İkinci kaynak atlanacak." >&2
           fi
 
       - name: Convert to Stockmount format (synthetic barcode + bullets + title + brand SDSTEP)
         run: |
+          SECOND_INPUT=""
+          if [ -f data/second_source.xml ]; then
+            SECOND_INPUT="--second-input data/second_source.xml"
+          fi
+          
           python convert_to_stockmount.py \
             --input data/source.xml \
+            $SECOND_INPUT \
             --output data/chekich21_synthetic_bullets_titled_nobrand.xml \
             --variant-mode \
             --barcode-strategy synthetic \
@@ -48,8 +63,8 @@ jobs:
             --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
             --brand-override "SDSTEP" \
             --sanitize-images \
-            --banned-term-replace Chekich=CHK \
-            --image-version-param "v=1"
+            --image-version-param "v=1" \
+            --banned-term-replace Chekich=CHK
 
       - name: Commit & push if changed
         run: |
