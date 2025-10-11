@@ -41,18 +41,21 @@ jobs:
         run: |
           python convert_to_stockmount.py \
             --input data/source.xml \
-            --output data/chekich21_synthetic_bullets_titled_nobrand.xml \
+            --output data/chekich.xml \
             --variant-mode \
             --barcode-strategy synthetic \
             --add-bullets \
             --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
-            --brand-override "SDSTEP"
+            --brand-override "SDSTEP" \
+            --sanitize-images \
+            --banned-term-replace Chekich=CHK \
+            --image-version-param "v=1"
 
       - name: Commit & push if changed
         run: |
           git config user.name "feed-bot"
           git config user.email "actions@github.com"
-          TARGET=data/chekich21_synthetic_bullets_titled_nobrand.xml
+          TARGET=data/chekich.xml
           if git diff --quiet "$TARGET"; then
             echo "Değişiklik yok, commit atlanıyor.";
             exit 0
