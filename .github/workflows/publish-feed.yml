@@ -41,7 +41,7 @@ jobs:
           # İkinci kaynak (yeni ayakkabılar)
           if [ -n "${{ secrets.SECOND_SOURCE_FEED_URL }}" ]; then
             echo "İkinci kaynaktan indiriliyor: ${{ secrets.SECOND_SOURCE_FEED_URL }}" >&2
-            curl -L --fail --silent --show-error "${{ secrets.SECOND_SOURCE_FEED_URL }}" -o data/second_source.xml
+            curl -L --fail --silent --show-error "${{ secrets.SECOND_SOURCE_FEED_URL }}" -o data/bayiwagoon.xml
           else
             echo "SECOND_SOURCE_FEED_URL secret tanımlı değil. İkinci kaynak atlanacak." >&2
           fi
@@ -49,8 +49,8 @@ jobs:
       - name: Convert to Stockmount format (synthetic barcode + bullets + title + brand SDSTEP)
         run: |
           SECOND_INPUT=""
-          if [ -f data/second_source.xml ]; then
-            SECOND_INPUT="--second-input data/second_source.xml"
+          if [ -f data/bayiwagoon.xml ]; then
+            SECOND_INPUT="--second-input data/bayiwagoon.xml"
           fi
           
           python convert_to_stockmount.py \
