@@ -51,16 +51,31 @@ jobs:
             --banned-term-replace Chekich=CHK \
             --image-version-param "v=1"
 
+      - name: Convert live_basic.xml to Stockmount format
+        run: |
+          python convert_to_stockmount.py \
+            --input data/live_basic.xml \
+            --output data/live_basic_stockmount.xml \
+            --variant-mode \
+            --barcode-prefix "2200" \
+            --add-bullets \
+            --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
+            --brand-override "SDSTEP" \
+            --sanitize-images \
+            --banned-term-replace Chekich=CHK \
+            --image-version-param "v=1"
+
       - name: Commit & push if changed
         run: |
           git config user.name "feed-bot"
           git config user.email "actions@github.com"
-          TARGET=data/chekich21_synthetic_bullets_titled_nobrand.xml
-          if git diff --quiet "$TARGET"; then
+          TARGET1=data/chekich21_synthetic_bullets_titled_nobrand.xml
+          TARGET2=data/live_basic_stockmount.xml
+          if git diff --quiet "$TARGET1" && git diff --quiet "$TARGET2"; then
             echo "Değişiklik yok, commit atlanıyor.";
             exit 0
           fi
-          git add "$TARGET"
+          git add "$TARGET1" "$TARGET2"
           git commit -m "chore(feed): 30min update $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           git push
         env:
