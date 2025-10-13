@@ -192,7 +192,7 @@ def build_bullet_block(features: list) -> str:
     items = ''.join(f'<li>{f}</li>' for f in features)
     return f"<ul>{items}</ul>"
 
-def apply_title_template(original_name: str, template: str, brand: str = "Solederva") -> str:
+def apply_title_template(original_name: str, template: str) -> str:
     """Basit başlık şablonu uygular. Placeholderlar:
     {MARKA} {MODEL} {RENK} {URUN}
     MODEL: isimde ilk boşluk veya ilk '-' öncesi blok (alfanumerik kısım)
@@ -230,8 +230,7 @@ def apply_title_template(original_name: str, template: str, brand: str = "Solede
             continue
         filtered.append(w)
     urun = " ".join(filtered).strip()
-    # MARKA değeri dışarıdan verilir (default: Solederva). Böylece brand override ile uyumlu olur.
-    result = template.replace('{MARKA}', brand).replace('{MODEL}', model).replace('{RENK}', renk).replace('{URUN}', urun)
+    result = template.replace('{MARKA}', 'Solederva').replace('{MODEL}', model).replace('{RENK}', renk).replace('{URUN}', urun)
     # Çift boşlukları sadeleştir
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
@@ -270,9 +269,10 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     description = description_elem.text if description_elem is not None and description_elem.text else ""
     category_path = build_category(product)
     images = extract_images(product)
-    if sanitize_images:
-        for k, v in list(images.items()):
-            images[k] = sanitize_image_url(v, image_version_param)
+    # Her ürünün resimlerine uniq bir versiyon parametresi ekle (örn: v=ProductCode)
+    uniq_version = f"v={product_code}"
+    for k, v in list(images.items()):
+        images[k] = sanitize_image_url(v, uniq_version)
     # Marka: kaynaktan ne gelirse onu kullan; boşsa 'Solederva' fallback; override varsa onu uygula
     brand_src = text(product.find("Brand"))
     brand = brand_src if brand_src else "SDSTEP"
@@ -379,7 +379,7 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
 
     # Title template uygula
     if title_template:
-        transformed_name = apply_title_template(name, title_template, brand=brand)
+        transformed_name = apply_title_template(name, title_template)
     else:
         transformed_name = name
 
