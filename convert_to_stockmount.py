@@ -235,17 +235,24 @@ def apply_title_template(original_name: str, template: str) -> str:
     result = re.sub(r"\s+"," ", result).strip().strip('-').strip()
     return result
 
-def sanitize_image_url(url: str, version_param: str = "") -> str:
+def sanitize_image_url(url: str, version_param: str = "", additional_params: str = "") -> str:
     if not url:
         return url
     u = url.strip().strip('"').strip("'")
     # İç boşlukları %20 ile değiştir
     u = re.sub(r"\s+", "%20", u)
-    # Versiyon parametresi ekle
-    if version_param and '?' not in u:
-        u += f"?{version_param}"
-    elif version_param and '?' in u:
-        u += f"&{version_param}"
+    
+    # Benzersizlik için ek parametreler ekle
+    params = []
+    if version_param:
+        params.append(version_param)
+    if additional_params:
+        params.append(additional_params)
+    
+    if params:
+        separator = '?' if '?' not in u else '&'
+        u += separator + '&'.join(params)
+    
     return u
 
 def cleanse_banned_terms(text_value: str, banned_map: dict) -> str:
@@ -269,12 +276,21 @@ def convert_product(product: ET.Element, variant_mode: bool, barcode_strategy: s
     description = description_elem.text if description_elem is not None and description_elem.text else ""
     category_path = build_category(product)
     images = extract_images(product)
-    # Her ürünün resimlerine uniq bir versiyon parametresi ekle (örn: v=ProductCode)
-    uniq_version = f"v={product_code}"
-    for k, v in list(images.items()):
-        images[k] = sanitize_image_url(v, uniq_version)
-    # Marka: kaynaktan ne gelirse onu kullan; boşsa 'Solederva' fallback; override varsa onu uygula
+    
+    # Marka bilgisini al (resim URL'lerinde kullanılacak)
     brand_src = text(product.find("Brand"))
+    
+    # Her ürünün resimlerine uniq parametreler ekle - buybox eşleşmesini tamamen önlemek için
+    # ProductCode + Name + Brand'den hash üret ve ek parametreler ekle
+    hash_base = f"{product_code}_{name}_{brand_src or 'SDSTEP'}"
+    unique_hash = hashlib.sha256(hash_base.encode('utf-8')).hexdigest()[:8]
+    uniq_version = f"v={unique_hash}"
+    # Ek benzersizlik parametreleri - buybox algoritması farklı URL'leri farklı ürün olarak görecek
+    extra_params = f"pid={product_code}&t={unique_hash[:4]}&src=sdstep"
+    for k, v in list(images.items()):
+        images[k] = sanitize_image_url(v, uniq_version, extra_params)
+    
+    # Marka ayarı: kaynaktan ne gelirse onu kullan; boşsa 'SDSTEP' fallback; override varsa onu uygula
     brand = brand_src if brand_src else "SDSTEP"
     if brand_override:
         brand = brand_override
