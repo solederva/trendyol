@@ -47,7 +47,7 @@ jobs:
             --barcode-prefix "2199" \
             --add-bullets \
             --title-template "Solederva {URUN} {RENK} - {MODEL}" \
-            --omit-brand \
+            --brand-override SDSTEP \
             --sanitize-images
 
       - name: Commit & push if changed
