@@ -37,45 +37,29 @@ jobs:
             curl -L --fail --silent --show-error "${{ secrets.SOURCE_FEED_URL }}" -o data/source.xml
           fi
 
-      - name: Convert to Stockmount format (synthetic barcode + bullets + title + brand SDSTEP)
+      - name: Convert Chekich feed to Stockmount format
         run: |
           python convert_to_stockmount.py \
-            --input data/source.xml \
+            --input data/source_chekich.xml \
             --output data/chekich21_synthetic_bullets_titled_nobrand.xml \
             --variant-mode \
-            --barcode-prefix "2200" \
+            --barcode-strategy synthetic \
+            --barcode-prefix "2199" \
             --add-bullets \
-            --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
-            --brand-override "SDSTEP" \
-            --sanitize-images \
-            --banned-term-replace Chekich=CHK \
-            --image-version-param "v=1"
-
-      - name: Convert live_basic.xml to Stockmount format
-        run: |
-          python convert_to_stockmount.py \
-            --input data/live_basic.xml \
-            --output data/live_basic_stockmount.xml \
-            --variant-mode \
-            --barcode-prefix "2200" \
-            --add-bullets \
-            --title-template "{MARKA} {URUN} {RENK} - {MODEL}" \
-            --brand-override "SDSTEP" \
-            --sanitize-images \
-            --banned-term-replace Chekich=CHK \
-            --image-version-param "v=1"
+            --title-template "Solederva {URUN} {RENK} - {MODEL}" \
+            --omit-brand \
+            --sanitize-images
 
       - name: Commit & push if changed
         run: |
           git config user.name "feed-bot"
           git config user.email "actions@github.com"
-          TARGET1=data/chekich21_synthetic_bullets_titled_nobrand.xml
-          TARGET2=data/live_basic_stockmount.xml
-          if git diff --quiet "$TARGET1" && git diff --quiet "$TARGET2"; then
+          TARGET=data/chekich21_synthetic_bullets_titled_nobrand.xml
+          if git diff --quiet "$TARGET"; then
             echo "Değişiklik yok, commit atlanıyor.";
             exit 0
           fi
-          git add "$TARGET1" "$TARGET2"
+          git add "$TARGET"
           git commit -m "chore(feed): 30min update $(date -u +'%Y-%m-%dT%H:%M:%SZ')"
           git push
         env:
