@@ -50,6 +50,10 @@ jobs:
             --brand-override SDSTEP \
             --sanitize-images
 
+      - name: Strengthen buybox protection
+        run: |
+          python strengthen_buybox_protection.py
+
       - name: Commit & push if changed
         run: |
           git config user.name "feed-bot"

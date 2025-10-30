@@ -5,6 +5,17 @@ from pathlib import Path
 from typing import Optional
 import hashlib
 import re
+import logging
+
+# Logging setup
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[
+        logging.FileHandler('conversion.log'),
+        logging.StreamHandler()
+    ]
+)
 
 # Kaynak alan -> Stockmount alan mapping açıklaması:
 # Product_code -> ProductCode (ürün ana kodu)
@@ -500,63 +511,92 @@ def serialize_with_cdata(root: ET.Element) -> str:
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Kaynak XML'i Stockmount formatına dönüştür")
-    parser.add_argument("--input", required=True, help="Kaynak XML dosyası (standart.xml)")
-    parser.add_argument("--second-input", default="", help="İkinci kaynak XML dosyası (varsa birleştirilecek)")
-    parser.add_argument("--output", required=True, help="Oluşacak Stockmount XML dosyası")
-    parser.add_argument("--variant-mode", action="store_true", help="Varyantları yaz (varsayılan kapalı)")
-    parser.add_argument("--barcode-strategy", choices=["keep","blank","synthetic"], default="keep", help="Barkod kullanımı stratejisi")
-    parser.add_argument("--barcode-prefix", default="2199", help="Sentetik barkod üretirken önek (synthetic modda)")
-    parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
-    parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
-    parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
-    parser.add_argument("--brand-override", default="", help="Tüm ürünlerde Brand bu değerle değişsin (örn: Markasız)")
-    parser.add_argument("--sanitize-images", action="store_true", help="Image URL'lerdeki boşlukları %20 ile değiştir")
-    parser.add_argument("--image-version-param", default="", help="Image URL'lerine eklenecek versiyon parametresi (örn: v=1)")
-    parser.add_argument("--banned-term-replace", action="append", default=[], help="Yasaklı kelime değişimi: ORJ=YENI biçiminde. Çoklu kullanılabilir.")
-    args = parser.parse_args()
+    try:
+        parser = argparse.ArgumentParser(description="Kaynak XML'i Stockmount formatına dönüştür")
+        parser.add_argument("--input", required=True, help="Kaynak XML dosyası (standart.xml)")
+        parser.add_argument("--second-input", default="", help="İkinci kaynak XML dosyası (varsa birleştirilecek)")
+        parser.add_argument("--output", required=True, help="Oluşacak Stockmount XML dosyası")
+        parser.add_argument("--variant-mode", action="store_true", help="Varyantları yaz (varsayılan kapalı)")
+        parser.add_argument("--barcode-strategy", choices=["keep","blank","synthetic"], default="keep", help="Barkod kullanımı stratejisi")
+        parser.add_argument("--barcode-prefix", default="2199", help="Sentetik barkod üretirken önek (synthetic modda)")
+        parser.add_argument("--add-bullets", action="store_true", help="Description başına otomatik özellik listesi ekle")
+        parser.add_argument("--title-template", default="", help="Başlık şablonu (örn: {MARKA} {URUN} {RENK} - {MODEL})")
+        parser.add_argument("--omit-brand", action="store_true", help="Brand etiketini tamamen yazma")
+        parser.add_argument("--brand-override", default="", help="Tüm ürünlerde Brand bu değerle değişsin (örn: Markasız)")
+        parser.add_argument("--sanitize-images", action="store_true", help="Image URL'lerdeki boşlukları %20 ile değiştir")
+        parser.add_argument("--image-version-param", default="", help="Image URL'lerine eklenecek versiyon parametresi (örn: v=1)")
+        parser.add_argument("--banned-term-replace", action="append", default=[], help="Yasaklı kelime değişimi: ORJ=YENI biçiminde. Çoklu kullanılabilir.")
+        args = parser.parse_args()
 
-    source_path = Path(args.input)
-    if not source_path.is_file():
-        print(f"Kaynak dosya bulunamadı: {source_path}", file=sys.stderr)
-        sys.exit(1)
+        logging.info(f"Dönüşüm başlatıldı: {args.input} -> {args.output}")
 
-    tree = ET.parse(str(source_path))
-    root = tree.getroot()
+        source_path = Path(args.input)
+        if not source_path.is_file():
+            logging.error(f"Kaynak dosya bulunamadı: {source_path}")
+            sys.exit(1)
 
-    products_data = []
-    banned_map = {}
-    for item in args.banned_term_replace:
-        if '=' in item:
-            src, repl = item.split('=', 1)
-            src = src.strip()
-            repl = repl.strip()
-            if src:
-                pattern = r"\b" + re.escape(src) + r"\b"
-                banned_map[pattern] = repl
-    
-    # İlk XML'den ürünleri işle
-    for product in root.findall("Product"):
-        pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override, banned_map=banned_map if banned_map else None, sanitize_images=args.sanitize_images, image_version_param=args.image_version_param)
-        products_data.append(pdata)
+        try:
+            tree = ET.parse(str(source_path))
+            root = tree.getroot()
+        except Exception as e:
+            logging.error(f"XML parse hatası: {e}")
+            sys.exit(1)
 
-    # İkinci XML varsa onu da işle ve birleştir
-    if args.second_input:
-        second_path = Path(args.second_input)
-        if second_path.is_file():
-            print(f"İkinci kaynak işleniyor: {second_path}", file=sys.stderr)
-            second_tree = ET.parse(str(second_path))
-            second_root = second_tree.getroot()
-            for product in second_root.findall("Product"):
+        products_data = []
+        banned_map = {}
+        for item in args.banned_term_replace:
+            if '=' in item:
+                src, repl = item.split('=', 1)
+                src = src.strip()
+                repl = repl.strip()
+                if src:
+                    pattern = r"\b" + re.escape(src) + r"\b"
+                    banned_map[pattern] = repl
+
+        # İlk XML'den ürünleri işle
+        processed_count = 0
+        for product in root.findall("Product"):
+            try:
                 pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override, banned_map=banned_map if banned_map else None, sanitize_images=args.sanitize_images, image_version_param=args.image_version_param)
                 products_data.append(pdata)
-        else:
-            print(f"İkinci kaynak dosya bulunamadı: {second_path}", file=sys.stderr)
+                processed_count += 1
+            except Exception as e:
+                logging.error(f"Ürün dönüştürme hatası: {e}")
+                continue
 
-    out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
-    xml_str = serialize_with_cdata(out_root)
-    Path(args.output).write_text(xml_str, encoding="utf-8")
-    print(f"Olusturuldu: {args.output} ({len(products_data)} ürün)")
+        # İkinci XML varsa onu da işle ve birleştir
+        if args.second_input:
+            second_path = Path(args.second_input)
+            if second_path.is_file():
+                logging.info(f"İkinci kaynak işleniyor: {second_path}")
+                try:
+                    second_tree = ET.parse(str(second_path))
+                    second_root = second_tree.getroot()
+                    for product in second_root.findall("Product"):
+                        try:
+                            pdata = convert_product(product, variant_mode=args.variant_mode, barcode_strategy=args.barcode_strategy, barcode_prefix=args.barcode_prefix, add_bullets=args.add_bullets, title_template=args.title_template, brand_override=args.brand_override, banned_map=banned_map if banned_map else None, sanitize_images=args.sanitize_images, image_version_param=args.image_version_param)
+                            products_data.append(pdata)
+                            processed_count += 1
+                        except Exception as e:
+                            logging.error(f"İkinci XML ürün dönüştürme hatası: {e}")
+                            continue
+                except Exception as e:
+                    logging.error(f"İkinci XML parse hatası: {e}")
+            else:
+                logging.warning(f"İkinci kaynak dosya bulunamadı: {second_path}")
+
+        try:
+            out_root = build_stockmount_xml(products_data, omit_brand=args.omit_brand)
+            xml_str = serialize_with_cdata(out_root)
+            Path(args.output).write_text(xml_str, encoding="utf-8")
+            logging.info(f"Dönüşüm tamamlandı: {args.output} ({len(products_data)} ürün)")
+        except Exception as e:
+            logging.error(f"XML yazma hatası: {e}")
+            sys.exit(1)
+
+    except Exception as e:
+        logging.error(f"Beklenmeyen hata: {e}")
+        sys.exit(1)
 
 if __name__ == "__main__":
     main()
