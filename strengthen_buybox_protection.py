@@ -91,7 +91,9 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                         desc += hidden_element
                     product.find("Description").text = desc
 
-                # 5. Resim URL'lerine ekstra rastgele parametreler ekle
+                # 5. Resim URL'lerine ekstra rastgele parametreler ekle ve sıralamayı ters çevir
+                # Önce tüm resimleri topla
+                images = {}
                 for i in range(1, 6):
                     img_tag = f"Image{i}"
                     img_elem = product.find(img_tag)
@@ -101,7 +103,17 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                             url += f"&rnd={generate_random_prefix(8)}&brand=SDSTEP"
                         else:
                             url += f"?rnd={generate_random_prefix(8)}&brand=SDSTEP"
-                        img_elem.text = url
+                        images[i] = url
+                
+                # Sıralamayı ters çevir (Image1 -> Image5, Image5 -> Image1)
+                for i in range(1, 6):
+                    img_tag = f"Image{i}"
+                    img_elem = product.find(img_tag)
+                    if img_elem is not None:
+                        # Ters sıra: 1->5, 2->4, 3->3, 4->2, 5->1
+                        reverse_index = 6 - i
+                        if reverse_index in images:
+                            img_elem.text = images[reverse_index]
 
                 product_count += 1
 
