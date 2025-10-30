@@ -21,15 +21,8 @@ def generate_random_prefix(length=6):
     return ''.join(random.choice(chars) for _ in range(length))
 
 def generate_unique_brand(product_code, name, brand_src):
-    """Benzersiz marka üret"""
-    try:
-        base = f"{product_code}_{name}_{brand_src}"
-        hash_obj = hashlib.sha256(base.encode('utf-8'))
-        hash_hex = hash_obj.hexdigest()[:8]
-        return f"SDSTEP-{hash_hex}"
-    except Exception as e:
-        logging.error(f"Marka üretme hatası: {e}")
-        return "SDSTEP-ERROR"
+    """Markayı sabit SDSTEP olarak tut"""
+    return "SDSTEP"
 
 def generate_random_title_prefix():
     """Rastgele başlık prefix'i üret"""
