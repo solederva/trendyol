@@ -55,10 +55,9 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                 brand_elem = product.find("Brand")
                 brand_src = brand_elem.text.strip() if brand_elem is not None and brand_elem.text else "SDSTEP"
 
-                # 1. Markayı tamamen benzersiz yap
-                new_brand = generate_unique_brand(product_code, product_name, brand_src)
+                # 1. Markayı SDSTEP olarak ayarla (hash'siz)
                 if brand_elem is not None:
-                    brand_elem.text = new_brand
+                    brand_elem.text = "SDSTEP"
 
                 # 2. Başlığa rastgele prefix ekle
                 if product.find("ProductName") is not None:
@@ -91,7 +90,7 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                 if product.find("Description") is not None:
                     desc = product.find("Description").text or ""
                     unique_id = generate_random_prefix(16)
-                    hidden_element = f'<p style="display:none;">{new_brand}-{unique_id}</p>'
+                    hidden_element = f'<p style="display:none;">SDSTEP-{unique_id}</p>'
                     # Eğer zaten gizli element varsa değiştir
                     if '<p style="display:none;">' in desc:
                         desc = desc.split('<p style="display:none;">')[0] + hidden_element
@@ -106,9 +105,9 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                     if img_elem is not None and img_elem.text:
                         url = img_elem.text
                         if "?" in url:
-                            url += f"&rnd={generate_random_prefix(8)}&brand={new_brand[:8]}"
+                            url += f"&rnd={generate_random_prefix(8)}&brand=SDSTEP"
                         else:
-                            url += f"?rnd={generate_random_prefix(8)}&brand={new_brand[:8]}"
+                            url += f"?rnd={generate_random_prefix(8)}&brand=SDSTEP"
                         img_elem.text = url
 
                 product_count += 1
