@@ -25,7 +25,7 @@ logging.basicConfig(
 # CurrencyType -> Currency (TRL -> TL dönüştürülür)
 # Tax -> TaxRate
 # Barcode (ürün genel barkod) -> Barcode (yoksa ilk variant barkodu kullanılabilir)
-# Kategori hiyerarşisi: mainCategory > category > subCategory -> Category ( > ile birleştirilmiş)
+# category -> Category (doğrudan kopyalanır, zenginleştirme yapılmaz)
 # Description -> Description (HTML olduğundan CDATA korunacak)
 # Image1..Image5 -> Image1..Image5
 # Brand -> Brand
@@ -46,12 +46,8 @@ def text(elem: Optional[ET.Element]) -> str:
     return elem.text.strip() if elem is not None and elem.text else ""
 
 def build_category(product: ET.Element) -> str:
-    parts = []
-    for tag in ["mainCategory", "category", "subCategory"]:
-        val = text(product.find(tag))
-        if val:
-            parts.append(val)
-    return " > ".join(parts)
+    # Sadece category alanını al, zenginleştirme yapma
+    return text(product.find("category")) or ""
 
 def extract_images(product: ET.Element):
     images = {}
