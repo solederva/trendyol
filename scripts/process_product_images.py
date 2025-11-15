@@ -76,13 +76,12 @@ def process_single(product_code: str, index: int, url: str) -> tuple[Path, bool]
     out_path = OUT_DIR / f"{product_code}_img{index}.jpg"
     try:
         img = download_image(url)
-        # rembg remove
-        cutout_bytes = remove(BytesIO(img.tobytes()))  # not used; better to use PIL input
-    except Exception:
-        cutout_bytes = None
+    except Exception as e:
+        logging.error(f"indirilemedi: {e} - {product_code} img{index}")
+        return (out_path, False)
 
     try:
-        # rembg remove - PIL friendly path
+        # rembg remove - PIL Image input
         from rembg import remove as rembg_remove
         out_rgba = rembg_remove(img)
     except Exception as e:
