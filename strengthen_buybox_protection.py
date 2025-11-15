@@ -4,6 +4,7 @@ import string
 import hashlib
 import logging
 from pathlib import Path
+from urllib.parse import urlencode
 
 # Logging setup
 logging.basicConfig(
@@ -41,6 +42,8 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
         root = tree.getroot()
 
         product_count = 0
+        repo_raw_base = "https://raw.githubusercontent.com/solederva/trendyol/main/"
+        processed_dir = Path("data/processed_images")
         for product in root.findall("Product"):
             try:
                 product_code = product.find("ProductCode").text.strip() if product.find("ProductCode") is not None else ""
@@ -91,29 +94,46 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                         desc += hidden_element
                     product.find("Description").text = desc
 
-                # 5. Resim URL'lerine ekstra rastgele parametreler ekle ve sıralamayı ters çevir
-                # Önce tüm resimleri topla
-                images = {}
+                # 5. Resimler: işlem görmüş (white bg) mevcutsa onları kullan; yoksa orijinal ve benzersiz parametre ekle
+                original_images = {}
                 for i in range(1, 6):
-                    img_tag = f"Image{i}"
-                    img_elem = product.find(img_tag)
-                    if img_elem is not None and img_elem.text:
-                        url = img_elem.text
-                        if "?" in url:
-                            url += f"&rnd={generate_random_prefix(8)}&brand=SDSTEP"
-                        else:
-                            url += f"?rnd={generate_random_prefix(8)}&brand=SDSTEP"
-                        images[i] = url
-                
-                # Sıralamayı ters çevir (Image1 -> Image5, Image5 -> Image1)
+                    tag = f"Image{i}"
+                    el = product.find(tag)
+                    if el is not None and el.text:
+                        original_images[i] = el.text
+
+                # İşlenmiş resimler için ham URL'ler
+                processed_urls = {}
                 for i in range(1, 6):
-                    img_tag = f"Image{i}"
-                    img_elem = product.find(img_tag)
-                    if img_elem is not None:
-                        # Ters sıra: 1->5, 2->4, 3->3, 4->2, 5->1
-                        reverse_index = 6 - i
-                        if reverse_index in images:
-                            img_elem.text = images[reverse_index]
+                    candidate = processed_dir / f"{product_code}_img{i}.jpg"
+                    if candidate.exists():
+                        rel_path = candidate.as_posix()
+                        processed_urls[i] = repo_raw_base + rel_path
+
+                # Seçilecek kaynak: varsa processed, yoksa original
+                chosen = {}
+                for i in range(1, 6):
+                    src = processed_urls.get(i) or original_images.get(i)
+                    if not src:
+                        continue
+                    # Benzersiz parametreler ekle
+                    if "?" in src:
+                        sep = "&"
+                    else:
+                        sep = "?"
+                    rnd = generate_random_prefix(8)
+                    params = urlencode({"rnd": rnd, "brand": "SDSTEP"})
+                    chosen[i] = f"{src}{sep}{params}"
+
+                # Sıralamayı ters çevir (Image1<->Image5, Image2<->Image4; Image3 aynı)
+                for i in range(1, 6):
+                    tag = f"Image{i}"
+                    el = product.find(tag)
+                    if el is None:
+                        continue
+                    reverse_index = 6 - i
+                    if reverse_index in chosen:
+                        el.text = chosen[reverse_index]
 
                 product_count += 1
 
