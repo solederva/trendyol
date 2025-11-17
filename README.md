@@ -5,7 +5,12 @@ Bu proje, Trendyol e-ticaret platformu için otomatik ürün feed yönetimi sağ
 ## 🚀 Özellikler
 
 - **Otomatik Feed Dönüşümü**: Kaynak XML → Stockmount XML
-- **Buybox Koruması**: Rastgele prefix'ler ve benzersiz markalar ile buybox'a takılmayı önler
+- **Agresif Buybox Koruması**: Trendyol algoritmasına karşı çok katmanlı koruma
+  - Marka rotasyonu (5 farklı varyasyon)
+  - Fiyat manipülasyonu (±0.01-0.99 TL)
+  - Barkod rotasyonu (her çalıştırmada yeni)
+  - Süper benzersiz resim URL'leri (8+ parametre)
+  - Rastgele başlık prefix'leri
 - **Benzersiz Barkod Üretimi**: Çakışma önlemek için hash tabanlı sentetik barkodlar
 - **Otomatik Güncellemeler**: GitHub Actions ile 30 dakikalık periyotlarda (08:00-18:00 arası)
 - **Varyant Desteği**: Renk ve beden varyantlarını işler
@@ -269,15 +274,44 @@ GitHub Actions workflow'u aşağıdaki zamanlamada çalışır:
 - Cumartesi: 09:00
 - Pazar: 09:00
 
-## 🛡️ Buybox Koruması
+## 🛡️ Agresif Buybox Koruması
 
-Sistem aşağıdaki yöntemlerle buybox'a takılmayı önler:
+Trendyol algoritmasına karşı **7 katmanlı koruma** sistemi:
 
-1. **Rastgele Başlık Prefix'leri**: Her ürün için benzersiz prefix
-2. **Hash Tabanlı Markalar**: Ürün bazlı benzersiz marka kodları
-3. **Gelişmiş Kategori Yapısı**: Rastgele alt kategoriler
-4. **Benzersiz Resim URL'leri**: Çoklu parametreler
-5. **Sentetik Barkodlar**: Çakışma önleyen benzersiz kodlar
+### 1. **Marka Rotasyonu** 🔄
+- 5 farklı marka varyasyonu: `SDSTEP`, `SD-STEP`, `SD STEP`, `SDSTEP™`, `SDSTEP®`
+- Her çalıştırmada farklı marka (timestamp bazlı)
+
+### 2. **Fiyat Manipülasyonu** 💰
+- ±0.01-0.99 TL arası küçük değişiklikler
+- Ürün koduna göre deterministik
+- Ana ürün + varyant fiyatları
+
+### 3. **Barkod Rotasyonu** 🏷️
+- Her çalıştırmada tamamen yeni EAN-13 barkod
+- Geçerli check digit ile
+- Ürün + varyant barkodları
+
+### 4. **Süper Benzersiz Başlıklar** 📝
+- 6-10 karakter uzunluğunda prefix'ler
+- 20+ farklı prefix seçeneği
+- Her çalıştırmada değişir
+
+### 5. **Gelişmiş Resim URL'leri** 🖼️
+- 8+ benzersiz parametre
+- Timestamp hash'leri
+- Ürün kodu bazlı parametreler
+- Çoklu random değerler
+
+### 6. **Gizli Tanımlayıcılar** 🔍
+- HTML'de görünmez elementler
+- Ürün spesifik benzersiz ID'ler
+
+### 7. **Kategori Manipülasyonu** 📂
+- Rastgele alt kategori ekleme
+- CDATA koruması
+
+**Sonuç**: Trendyol'un 59 ürünü buybox'a dahil etme sorununu çözer!
 
 ## 📁 Dosya Yapısı
 
