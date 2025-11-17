@@ -26,13 +26,64 @@ def generate_unique_brand(product_code, name, brand_src):
     return "SDSTEP"
 
 def generate_random_title_prefix():
-    """Rastgele başlık prefix'i üret"""
+    """Rastgele başlık prefix'i üret - daha agresif"""
     prefixes = [
         "Premium", "Elite", "Luxury", "Classic", "Modern", "Style",
-        "Trend", "Fashion", "Comfort", "Quality", "Best", "Top"
+        "Trend", "Fashion", "Comfort", "Quality", "Best", "Top",
+        "Exclusive", "Signature", "Ultimate", "Supreme", "Prime",
+        "Select", "Choice", "Preferred", "Superior", "Excellent"
     ]
-    suffix = generate_random_prefix(4)
+    # Daha uzun ve değişken suffix
+    suffix = generate_random_prefix(random.randint(6, 10))
     return f"{random.choice(prefixes)}-{suffix}"
+
+def generate_rotating_brand(product_code, timestamp):
+    """Markayı rotasyona sok - her çalıştırmada farklı"""
+    brands = ["SDSTEP", "SD-STEP", "SD STEP", "SDSTEP™", "SDSTEP®"]
+    # Timestamp'a göre deterministik seçim
+    brand_index = hash(timestamp + product_code) % len(brands)
+    return brands[brand_index]
+
+def apply_price_manipulation(price_elem, product_code):
+    """Fiyata çok küçük manipülasyon uygula"""
+    if price_elem is not None and price_elem.text:
+        try:
+            price = float(price_elem.text)
+            # Manipülasyonu ürün koduna göre deterministik yap
+            seed = hash(product_code) % 1000
+            random.seed(seed)
+            manipulation = random.uniform(-0.99, 0.99)
+            new_price = round(price + manipulation, 2)
+            # Negatif fiyat olmasın
+            new_price = max(0.01, new_price)
+            price_elem.text = f"{new_price:.2f}"
+        except (ValueError, AttributeError):
+            pass
+
+def rotate_barcode(barcode_elem, product_code, timestamp):
+    """Barkodu her çalıştırmada değiştir"""
+    if barcode_elem is not None and barcode_elem.text:
+        current_barcode = barcode_elem.text.strip()
+        if current_barcode:
+            # Timestamp ile yeni hash üret
+            new_seed = f"{product_code}_{timestamp}_{current_barcode}"
+            new_hash = hashlib.md5(new_seed.encode()).hexdigest()[:12]
+            # 2199 prefix ile yeni barkod
+            new_barcode = f"2199{new_hash}"
+            # EAN-13 check digit hesapla
+            def ean_check(num12: str) -> str:
+                total = 0
+                for idx, c in enumerate(num12):
+                    n = int(c)
+                    if (idx + 1) % 2 == 0:
+                        total += n * 3
+                    else:
+                        total += n
+                return str((10 - (total % 10)) % 10)
+            if len(new_barcode) == 12:
+                check_digit = ean_check(new_barcode)
+                new_barcode += check_digit
+            barcode_elem.text = new_barcode
 
 def modify_xml_for_buybox_protection(input_file: str, output_file: str):
     """XML'i buybox koruması için değiştir"""
@@ -40,6 +91,10 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
         logging.info(f"XML işleme başlıyor: {input_file}")
         tree = ET.parse(input_file)
         root = tree.getroot()
+
+        # Timestamp for deterministic but rotating values
+        import time
+        current_timestamp = str(int(time.time()))
 
         product_count = 0
         repo_raw_base = "https://raw.githubusercontent.com/solederva/trendyol/main/"
@@ -51,11 +106,39 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                 brand_elem = product.find("Brand")
                 brand_src = brand_elem.text.strip() if brand_elem is not None and brand_elem.text else "SDSTEP"
 
-                # 1. Markayı SDSTEP olarak ayarla (hash'siz)
+                # 1. MARKA ROTASYONU - Her çalıştırmada farklı marka kullan
                 if brand_elem is not None:
-                    brand_elem.text = "SDSTEP"
+                    brand_elem.text = generate_rotating_brand(product_code, current_timestamp)
 
-                # 2. Başlığa rastgele prefix ekle
+                # 2. BAŞLIK MANİPÜLASYONU - Daha agresif prefix'ler
+                if product.find("ProductName") is not None:
+                    random_prefix = generate_random_title_prefix()
+                    current_name = product.find("ProductName").text
+                    # Eğer zaten prefix varsa değiştir, yoksa ekle
+                    if " | " in current_name:
+                        base_name = current_name.split(" | ", 1)[1]
+                        new_name = f"{random_prefix} | {base_name}"
+                    else:
+                        new_name = f"{random_prefix} | {current_name}"
+                    product.find("ProductName").text = new_name
+
+                # 3. FİYAT MANİPÜLASYONU - Çok küçük farklarla değiştir
+                price_elem = product.find("Price")
+                apply_price_manipulation(price_elem, product_code)
+
+                # 4. BARKOD ROTASYONU - Her çalıştırmada farklı barkod
+                barcode_elem = product.find("Barcode")
+                rotate_barcode(barcode_elem, product_code, current_timestamp)
+
+                # Varyant barkodlarını da döndür
+                variants = product.find("Variants")
+                if variants is not None:
+                    for variant in variants.findall("Variant"):
+                        variant_barcode = variant.find("Barcode")
+                        if variant_barcode is not None:
+                            variant_code = variant.find("VariantCode")
+                            variant_id = variant_code.text if variant_code is not None else f"{product_code}_variant"
+                            rotate_barcode(variant_barcode, variant_id, current_timestamp)
                 if product.find("ProductName") is not None:
                     random_prefix = generate_random_title_prefix()
                     current_name = product.find("ProductName").text
@@ -94,7 +177,7 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                         desc += hidden_element
                     product.find("Description").text = desc
 
-                # 5. Resimler: işlem görmüş (white bg) mevcutsa onları kullan; yoksa orijinal ve benzersiz parametre ekle
+                # 5. RESİM URL'LERİ - Çok daha benzersiz parametreler
                 original_images = {}
                 for i in range(1, 6):
                     tag = f"Image{i}"
@@ -116,14 +199,25 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                     src = processed_urls.get(i) or original_images.get(i)
                     if not src:
                         continue
-                    # Benzersiz parametreler ekle
+                    # ÇOK DAHA GÜÇLÜ benzersiz parametreler
                     if "?" in src:
                         sep = "&"
                     else:
                         sep = "?"
-                    rnd = generate_random_prefix(8)
-                    params = urlencode({"rnd": rnd, "brand": "SDSTEP"})
-                    chosen[i] = f"{src}{sep}{params}"
+                    # Timestamp + product code + image index ile hash üret
+                    unique_seed = f"{current_timestamp}_{product_code}_img{i}"
+                    img_hash = hashlib.md5(unique_seed.encode()).hexdigest()[:12]
+                    # Çok fazla parametre ekle
+                    params = {
+                        "v": img_hash,
+                        "t": current_timestamp[-6:],
+                        "p": product_code[:8],
+                        "i": str(i),
+                        "brand": "SDSTEP",
+                        "rnd": generate_random_prefix(6)
+                    }
+                    param_str = urlencode(params)
+                    chosen[i] = f"{src}{sep}{param_str}"
 
                 # Sıralamayı ters çevir (Image1<->Image5, Image2<->Image4; Image3 aynı)
                 for i in range(1, 6):
