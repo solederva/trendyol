@@ -297,11 +297,10 @@ Trendyol algoritmasına karşı **7 katmanlı koruma** sistemi:
 - 20+ farklı prefix seçeneği
 - Her çalıştırmada değişir
 
-### 5. **Gelişmiş Resim URL'leri** 🖼️
-- 8+ benzersiz parametre
-- Timestamp hash'leri
-- Ürün kodu bazlı parametreler
-- Çoklu random değerler
+### 5. **Resim Kaldırma** 🖼️❌
+- **Trendyol algoritması**: Resimleri tarayıp aynı resimleri buybox'a dahil ediyor
+- **Çözüm**: Tüm resimleri kaldır (Image1-Image5)
+- **Etki**: Eksik resim buybox'a girmeyi önler
 
 ### 6. **Gizli Tanımlayıcılar** 🔍
 - HTML'de görünmez elementler
