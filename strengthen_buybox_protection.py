@@ -177,57 +177,16 @@ def modify_xml_for_buybox_protection(input_file: str, output_file: str):
                         desc += hidden_element
                     product.find("Description").text = desc
 
-                # 5. RESİM URL'LERİ - Çok daha benzersiz parametreler
-                original_images = {}
+                # 5. RESİMLERİ KALDIR - Buybox resim taramasını önle
+                # Trendyol resimleri tarayıp aynı resimleri buybox'a dahil ediyor
+                # Çözüm: Tüm resimleri kaldır - eksik resim buybox'a girmeyi önler
                 for i in range(1, 6):
                     tag = f"Image{i}"
-                    el = product.find(tag)
-                    if el is not None and el.text:
-                        original_images[i] = el.text
-
-                # İşlenmiş resimler için ham URL'ler
-                processed_urls = {}
-                for i in range(1, 6):
-                    candidate = processed_dir / f"{product_code}_img{i}.jpg"
-                    if candidate.exists():
-                        rel_path = candidate.as_posix()
-                        processed_urls[i] = repo_raw_base + rel_path
-
-                # Seçilecek kaynak: varsa processed, yoksa original
-                chosen = {}
-                for i in range(1, 6):
-                    src = processed_urls.get(i) or original_images.get(i)
-                    if not src:
-                        continue
-                    # ÇOK DAHA GÜÇLÜ benzersiz parametreler
-                    if "?" in src:
-                        sep = "&"
-                    else:
-                        sep = "?"
-                    # Timestamp + product code + image index ile hash üret
-                    unique_seed = f"{current_timestamp}_{product_code}_img{i}"
-                    img_hash = hashlib.md5(unique_seed.encode()).hexdigest()[:12]
-                    # Çok fazla parametre ekle
-                    params = {
-                        "v": img_hash,
-                        "t": current_timestamp[-6:],
-                        "p": product_code[:8],
-                        "i": str(i),
-                        "brand": "SDSTEP",
-                        "rnd": generate_random_prefix(6)
-                    }
-                    param_str = urlencode(params)
-                    chosen[i] = f"{src}{sep}{param_str}"
-
-                # Sıralamayı ters çevir (Image1<->Image5, Image2<->Image4; Image3 aynı)
-                for i in range(1, 6):
-                    tag = f"Image{i}"
-                    el = product.find(tag)
-                    if el is None:
-                        continue
-                    reverse_index = 6 - i
-                    if reverse_index in chosen:
-                        el.text = chosen[reverse_index]
+                    img_elem = product.find(tag)
+                    if img_elem is not None:
+                        # Resim elementini tamamen kaldır
+                        product.remove(img_elem)
+                        logging.debug(f"Resim kaldırıldı: {tag} for product {product_code}")
 
                 product_count += 1
 
